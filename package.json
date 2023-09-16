@@ -8,10 +8,18 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^3.1.4",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"svelte": "^4.0.5",
 		"vite": "^4.4.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@codemirror/legacy-modes": "github:codemirror/legacy-modes",
+		"@codemirror/merge": "^6.1.2",
+		"codemirror": "^6.0.1",
+		"codemirror-extension-inline-suggestion": "^0.0.1",
+		"thememirror": "^2.0.1"
+	}
 }
