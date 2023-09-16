@@ -1,13 +1,14 @@
 <script>
     export let imgLink;
+    export let title;
 </script>
 
 <div class="template-card">
     <div class="image-container">
-        <div class="image"><img class="picture" src={imgLink} alt="Preview of template"></div>
+        <div class="image"><img class="picture" src={imgLink}></div>
     </div>
     <div class="text-container">
-        <p class="text">Simple</p>
+        <p class="text">{title}</p>
     </div>
 </div>
 
@@ -17,7 +18,7 @@
         flex-direction: column;
         background-color: white;
         width: 200px;
-        height: 225px;
+        height: 295px;
         border-radius: 5px;
         box-shadow: 0 2px 2px 0 rgba(46, 46, 46, 0.19);
     }
@@ -35,15 +36,18 @@
         justify-content: center;
         align-items: center;
     }
+    
     .image {
-        background-color: #f2f2f2;
+        
         width: 90%;
-        height: 85%;
+        height: 92%;
         border-radius: 10px;
     }
+    
     .picture {
+        background-color: white;
         width: 100%;
-        max-height: 100%;
+        height: 230px;
         border-radius: 10px;
     }
     .text-container {
@@ -52,6 +56,6 @@
         flex: 1;
     }
     .text {
-        margin-top: 0px;
+        margin-top: 10px;
     }
 </style>
