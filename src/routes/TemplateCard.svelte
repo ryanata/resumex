@@ -13,6 +13,7 @@
 </div>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
     .template-card {
         display: flex;
         flex-direction: column;
@@ -56,6 +57,6 @@
         flex: 1;
     }
     .text {
-        margin-top: 10px;
+        margin-top: 15px;
     }
 </style>

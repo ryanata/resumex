@@ -2,6 +2,7 @@
     import TemplateCard from "./TemplateCard.svelte";
     import imgLink from "./TemplateCard.svelte";
     import title from "./TemplateCard.svelte";
+    import logo from '$lib/images/logo.png';
 </script>
 
 <svelte:head>
@@ -10,8 +11,8 @@
 </svelte:head>
 
 <section class="centered-container">
-    <h1>insert image here</h1>
-    <p>Craft your latex resume with the power of generative AI 😁</p>
+    <img class="logo" src={logo} alt="logo">
+    <p>Craft your latex resume with the power of generative AI 📝</p>
     <div class="templates-container">
         <TemplateCard title="Blank"/>
         <TemplateCard title="Simple" imgLink="https://writelatex.s3.amazonaws.com/published_ver/19515.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T062010Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b69afc6951c10e40c4aabc57f6e0c478f8312a183b236e1d8a60bb1f420efdae"/>
@@ -26,7 +27,20 @@
 
 <style>
     :root{
-        background-color: #F9F8FD;
+        background-color: #f7f7f9;
+        font-family: 'Inclusive Sans', sans-serif;
+    }
+    .logo{
+        width: 240px;
+        margin-top: 20px;
+    }
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    p {
+        font-size: 1.2rem;
+        font-weight: 400;
     }
     .centered-container {
         width: 100%;
