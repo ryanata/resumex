@@ -1,6 +1,7 @@
 <script>
     import logo from '$lib/images/logo_70.svg';
     import Icon from '@iconify/svelte';
+
     export let submitter;
 </script>
 
@@ -8,9 +9,15 @@
     <div class="left-header-items">
         <img src={logo} alt="RESUMEX" />
         <div class="icon-row">
-            <Icon style="width: 48px; height: 48px;" icon="quill:paper" />
-            <Icon style="width: 48px; height: 48px;" icon="quill:paper" />
-            <Icon style="width: 48px; height: 48px;" icon="quill:paper" />
+            <a href="../resume-dashboard/resume">
+                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="quill:paper" />
+            </a>
+            <a href="../resume-dashboard/resume-modify">
+                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="mdi:book-edit-outline" />
+            </a>
+            <a href="../resume-dashboard/cover-letter">
+                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="mdi:email-newsletter" />
+            </a>
         </div>
     </div>
     <div class="right-header-items">
@@ -29,11 +36,12 @@
     }
     .icon-row {
         display: flex;
+        gap: 12px;
         align-items: center;
     }
     .left-header-items {
         display: flex;
-        gap: 10px;
+        gap: 35px;
     }
     .right-header-items {
         display: flex;
@@ -42,6 +50,7 @@
     .compile-button {
         height: 40px;
         width: 155px;
+        margin-right: 20px;
         border-radius: 5px;
         color: gray;
     }

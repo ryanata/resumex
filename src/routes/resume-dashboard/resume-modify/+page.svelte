@@ -1,23 +1,17 @@
 <script>
-	import Header from './Header.svelte';
+	import Header from '../Header.svelte';
     import { onMount, onDestroy } from 'svelte';
     import { basicSetup, EditorView } from 'codemirror';
     import { StreamLanguage } from '@codemirror/language';
     import { stex } from '@codemirror/legacy-modes/mode/stex';
+	import { unifiedMergeView } from "@codemirror/merge";
     import {ayuLight} from 'thememirror';
     import { inlineSuggestion } from 'codemirror-extension-inline-suggestion';
+    import { preferences } from "$lib/stores/store.js";
+
 
     let editor;
-    let initialText = 'console.log("hello, world")';
-
-    const suggestLatex = async (state) => {
-        let idxx = state.selection.ranges[0].from;
-        let leftChunk =state.doc.toString().slice(0, idxx);
-        let rightChunk = state.doc.toString().slice(idxx);
-        console.log(leftChunk);
-        console.log(rightChunk);
-        return "hello this is a test\nthis is a new line"
-    }
+    let resumex = $preferences.resumex;
 
     function addinputnoenc(f,n,v) {
         var inp=document.createElement("input");
@@ -41,25 +35,36 @@
     const submitForm = () => {
         let f = document.getElementById("form2-pre");
         let inp = f.getElementsByTagName("textarea")[0];
-        inp.textContent = editor.state.doc.toString();
+        inp.textContent = editor ? editor.state.doc.toString() : resumex;
         f.submit();
+    }
+
+    const updateLatex = () => {
+        editor.dispatch({
+            changes: {from: 0, to: editor.state.doc.length, insert: 'New Test Text'}
+        });
     }
 
     onMount(() => {
         editor = new EditorView({
-            doc: initialText,
+            doc: resumex,
             extensions: [
                 basicSetup,
                 ayuLight,
+                EditorView.lineWrapping,
                 StreamLanguage.define(stex),
-                inlineSuggestion({
-                    fetchFn: suggestLatex,
-                    delay: 3000
-                })
+                unifiedMergeView({
+                    original: resumex,
+                    mergeControls: true,
+                    gutter: true,
+                    highlightChanges: true,
+                    syntaxHighlightDeletions: true,
+                }),
             ],
             parent: document.querySelector('#editor'),
         });
-        init_latex(initialText);
+        init_latex(resumex);
+        submitForm();
     });
 
     onDestroy(() => {
@@ -72,6 +77,7 @@
 <div class="dashboard">
     <div class="left-pane">
         <Header submitter={submitForm}/>
+        <button on:click={updateLatex}/>
         <div class="editor-wrapper">
             <div id="editor"></div>
         </div>

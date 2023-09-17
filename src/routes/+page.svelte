@@ -1,8 +1,14 @@
 <script>
     import TemplateCard from "./TemplateCard.svelte";
-    import imgLink from "$lib/images/";
-    import title from "./TemplateCard.svelte";
     import logo from '$lib/images/logo.png';
+    import { templates } from '$lib/index.js'
+    import { preferences } from "$lib/stores/store.js";
+    import { goto } from '$app/navigation';
+
+    const saveTemplate = (template) => {
+        preferences.set('resumex', templates[template]);
+        goto('/resume-dashboard/resume');
+    }
 </script>
 
 <svelte:head>
@@ -14,7 +20,7 @@
     <img class="logo" src={logo} alt="logo">
     <p>Craft your latex resume with the power of generative AI 📝</p>
     <div class="templates-container">
-        <TemplateCard title="Blank"/>
+        <TemplateCard handler={() => saveTemplate("blank")} title="Blank"/>
         <TemplateCard title="Simple" imgLink="$lib/images/simple.jpeg"/>
         <TemplateCard title="Simple 2.0" imgLink="$lib/images/simple2.jpeg"/>
         <TemplateCard title="Professional" imgLink="$lib/images/professional.jpeg"/>
@@ -33,10 +39,6 @@
     .logo{
         width: 240px;
         margin-top: 20px;
-    }
-    h1 {
-        font-size: 2rem;
-        font-weight: 700;
     }
     p {
         font-size: 1.2rem;
