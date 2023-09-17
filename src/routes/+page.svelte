@@ -6,7 +6,7 @@
     import { goto } from '$app/navigation';
 
     const saveTemplate = (template) => {
-        preferences.set('resumex', templates[template]);
+        preferences.set({resumex: templates[template]});
         goto('/resume-dashboard/resume');
     }
 </script>
