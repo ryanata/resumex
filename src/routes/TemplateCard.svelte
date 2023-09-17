@@ -6,7 +6,7 @@
 
 <div role="button" tabindex={-1} class="template-card" on:click={handler} on:keydown={() => {}}>
     <div class="image-container">
-        <div class="image"><img class="picture" alt="template preview" src={imgLink}></div>
+        <div class="image"><img class="picture" src={imgLink}></div>
     </div>
     <div class="text-container">
         <p class="text">{title}</p>

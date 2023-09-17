@@ -4,6 +4,13 @@
     import { templates } from '$lib/index.js'
     import { preferences } from "$lib/stores/store.js";
     import { goto } from '$app/navigation';
+    import bold from '$lib/images/bold.jpg';
+    import clean from '$lib/images/clean.jpeg';
+    import colorful from '$lib/images/colorful.jpeg';
+    import minimalist from '$lib/images/minimalist.jpeg';
+    import professional from '$lib/images/professional.jpg';
+    import simple from '$lib/images/simple.jpeg';
+    import simple2 from '$lib/images/simple2.jpeg';
 
     const saveTemplate = (template) => {
         preferences.set({resumex: templates[template]});
@@ -20,14 +27,16 @@
     <img class="logo" src={logo} alt="logo">
     <p>Craft your latex resume with the power of generative AI 📝</p>
     <div class="templates-container">
+
         <TemplateCard handler={() => saveTemplate("blank")} title="Blank"/>
-        <TemplateCard title="Simple" imgLink="https://writelatex.s3.amazonaws.com/published_ver/19515.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T062010Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b69afc6951c10e40c4aabc57f6e0c478f8312a183b236e1d8a60bb1f420efdae"/>
-        <TemplateCard title="Basic" imgLink="https://writelatex.s3.amazonaws.com/published_ver/29516.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061201Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e5945a1a49e52e49c46c0bd166725b4087467cce053d3b636783525373bfcbd2"/>
-        <TemplateCard title="Columns" imgLink="https://writelatex.s3.amazonaws.com/published_ver/8420.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061604Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a8100eefda10751678aa29799ddac4fbe0d26446860d9e47a9bd01a186d805c2"/>
-        <TemplateCard title="Clean" imgLink="https://writelatex.s3.amazonaws.com/published_ver/17789.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061350Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=d9829f83162c6042ad9bbd899427b7f0faa5e455c96783c76123969d0cd03ebe"/>
-        <TemplateCard title="Modern" imgLink="https://writelatex.s3.amazonaws.com/published_ver/30280.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061630Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8b90baaee69887502dbab6bec66239e18dfc3ee8aec37a540046792a664aec7d"/>
-        <TemplateCard title="Simple 2.0" imgLink="https://writelatex.s3.amazonaws.com/published_ver/21314.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061401Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=25fff0057113da470b9b44f327902e43d95458edb4f793c4343ff7b11c99dbba"/>
-        <TemplateCard title="Modular" imgLink="https://writelatex.s3.amazonaws.com/published_ver/22585.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T080803Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f4ed0a0151d3800c69f6799af748c7d4dc296686086159c4592e224d339bd693"/>
+
+        <TemplateCard title="Simple" imgLink={simple} handler={() => saveTemplate("simple")}/>
+        <TemplateCard title="Simple 2.0" imgLink={simple2} handler={() => saveTemplate("simple2")}/>
+        <TemplateCard title="Columns" imgLink={professional} handler={() => saveTemplate("professional")}/>
+        <TemplateCard title="Clean" imgLink={clean} handler={() => saveTemplate("clean")}/>
+        <TemplateCard title="Colorful" imgLink={colorful} handler={() => saveTemplate("colorful")}/>
+        <TemplateCard title="Minimalist" imgLink={minimalist} handler={() => saveTemplate("minimalist")}/>
+        <TemplateCard title="Bold" imgLink={bold} handler={() => saveTemplate("bold")}/>
     </div>
 </section>
 
