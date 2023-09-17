@@ -4,6 +4,13 @@
     import { templates } from '$lib/index.js'
     import { preferences } from "$lib/stores/store.js";
     import { goto } from '$app/navigation';
+    import bold from '$lib/images/bold.jpeg';
+    import clean from '$lib/images/clean.jpeg';
+    import colorful from '$lib/images/colorful.jpeg';
+    import minimalist from '$lib/images/minimalist.jpeg';
+    import professional from '$lib/images/professional.jpeg';
+    import simple from '$lib/images/simple.jpeg';
+    import simple2 from '$lib/images/simple2.jpeg';
 
     const saveTemplate = (template) => {
         preferences.set('resumex', templates[template]);
@@ -20,14 +27,16 @@
     <img class="logo" src={logo} alt="logo">
     <p>Craft your latex resume with the power of generative AI 📝</p>
     <div class="templates-container">
+
         <TemplateCard handler={() => saveTemplate("blank")} title="Blank"/>
-        <TemplateCard title="Simple" imgLink="$lib/images/simple.jpeg"/>
-        <TemplateCard title="Simple 2.0" imgLink="$lib/images/simple2.jpeg"/>
-        <TemplateCard title="Professional" imgLink="$lib/images/professional.jpeg"/>
-        <TemplateCard title="Clean" imgLink="$lib/images/clean.jpeg"/>
-        <TemplateCard title="Colorful" imgLink="$lib/images/colorful.jpeg"/>
-        <TemplateCard title="Minimalist" imgLink="$lib/images/minimalist.jpeg"/>
-        <TemplateCard title="Bold" imgLink="$lib/images/bold.jpeg"/>
+
+        <TemplateCard title="Simple" imgLink={simple}/>
+        <TemplateCard title="Simple 2.0" imgLink={simple2}/>
+        <TemplateCard title="Professional" imgLink={professional}/>
+        <TemplateCard title="Clean" imgLink={clean}/>
+        <TemplateCard title="Colorful" imgLink={colorful}/>
+        <TemplateCard title="Minimalist" imgLink={minimalist}/>
+        <TemplateCard title="Bold" imgLink={bold}/>
     </div>
 </section>
 
