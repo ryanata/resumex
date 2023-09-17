@@ -13,7 +13,7 @@
     import simple2 from '$lib/images/simple2.jpeg';
 
     const saveTemplate = (template) => {
-        preferences.set('resumex', templates[template]);
+        preferences.set({resumex: templates[template]});
         goto('/resume-dashboard/resume');
     }
 </script>
