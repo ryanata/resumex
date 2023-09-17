@@ -7,18 +7,19 @@
 
 <div class="header-container">
     <div class="left-header-items">
-        <img src={logo} alt="RESUMEX" style="width: 36px; margin-left: 10px; margin-top: 0px;
-         "/>
+        <a href="/">
+            <img src={logo} alt="RESUMEX" style="width: 36px; margin-left: 10px; margin-top: 0px; "/>
+        </a>
         <div class="icon-row">
             <a href="../resume-dashboard/resume">
                 <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="quill:paper" />
             </a>
-            <a href="../resume-dashboard/resume-modify">
+            <!-- <a href="../resume-dashboard/resume-modify">
                 <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="mdi:book-edit-outline" />
-            </a>
-            <a href="../resume-dashboard/cover-letter">
+            </a> -->
+            <!-- <a href="../resume-dashboard/cover-letter">
                 <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="mdi:email-newsletter" />
-            </a>
+            </a> -->
         </div>
     </div>
     <div class="right-header-items">

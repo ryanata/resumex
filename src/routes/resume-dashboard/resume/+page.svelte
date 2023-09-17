@@ -70,7 +70,7 @@
                 StreamLanguage.define(stex),
                 inlineSuggestion({
                     fetchFn: suggestLatex,
-                    delay: 3000
+                    delay: 1000
                 })
             ],
             parent: document.querySelector('#editor'),
