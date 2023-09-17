@@ -7,16 +7,17 @@
 
 <div class="header-container">
     <div class="left-header-items">
-        <img src={logo} alt="RESUMEX" />
+        <img src={logo} alt="RESUMEX" style="width: 36px; margin-left: 10px; margin-top: 0px;
+         "/>
         <div class="icon-row">
             <a href="../resume-dashboard/resume">
-                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="quill:paper" />
+                <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="quill:paper" />
             </a>
             <a href="../resume-dashboard/resume-modify">
-                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="mdi:book-edit-outline" />
+                <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="mdi:book-edit-outline" />
             </a>
             <a href="../resume-dashboard/cover-letter">
-                <Icon style="width: 48px; height: 48px; color: #706E6E;" icon="mdi:email-newsletter" />
+                <Icon style="width: 36px; height: 36px; color: #706E6E;" icon="mdi:email-newsletter" />
             </a>
         </div>
     </div>
@@ -32,11 +33,11 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 80px;
+        height: 60px;
     }
     .icon-row {
         display: flex;
-        gap: 12px;
+        gap: 14px;
         align-items: center;
     }
     .left-header-items {
@@ -49,9 +50,14 @@
     }
     .compile-button {
         height: 40px;
-        width: 155px;
+        width: 145px;
+        color: #706E6E;
+        border: 2px solid #dadada;
         margin-right: 20px;
         border-radius: 5px;
-        color: gray;
+    }
+    .compile-button:hover {
+        cursor: pointer;
+        background-color: #dadada;
     }
 </style>
