@@ -1,8 +1,14 @@
 <script>
     import TemplateCard from "./TemplateCard.svelte";
-    import imgLink from "./TemplateCard.svelte";
-    import title from "./TemplateCard.svelte";
     import logo from '$lib/images/logo.png';
+    import { templates } from '$lib/index.js'
+    import { preferences } from "$lib/stores/store.js";
+    import { goto } from '$app/navigation';
+
+    const saveTemplate = (template) => {
+        preferences.set('resumex', templates[template]);
+        goto('/resume-dashboard/resume');
+    }
 </script>
 
 <svelte:head>
@@ -14,7 +20,7 @@
     <img class="logo" src={logo} alt="logo">
     <p>Craft your latex resume with the power of generative AI 📝</p>
     <div class="templates-container">
-        <TemplateCard title="Blank"/>
+        <TemplateCard handler={() => saveTemplate("blank")} title="Blank"/>
         <TemplateCard title="Simple" imgLink="https://writelatex.s3.amazonaws.com/published_ver/19515.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T062010Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b69afc6951c10e40c4aabc57f6e0c478f8312a183b236e1d8a60bb1f420efdae"/>
         <TemplateCard title="Basic" imgLink="https://writelatex.s3.amazonaws.com/published_ver/29516.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061201Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e5945a1a49e52e49c46c0bd166725b4087467cce053d3b636783525373bfcbd2"/>
         <TemplateCard title="Columns" imgLink="https://writelatex.s3.amazonaws.com/published_ver/8420.jpeg?X-Amz-Expires=14400&X-Amz-Date=20230916T061604Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAWJBOALPNFPV7PVH5/20230916/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a8100eefda10751678aa29799ddac4fbe0d26446860d9e47a9bd01a186d805c2"/>
@@ -33,10 +39,6 @@
     .logo{
         width: 240px;
         margin-top: 20px;
-    }
-    h1 {
-        font-size: 2rem;
-        font-weight: 700;
     }
     p {
         font-size: 1.2rem;
