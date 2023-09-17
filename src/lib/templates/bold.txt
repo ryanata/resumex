@@ -1,158 +1,139 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% "ModernCV" CV and Cover Letter
-% LaTeX Template
-% Version 1.11 (19/6/14)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
 %
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
 %
-% Original author:
-% Xavier Danaux (xdanaux@gmail.com)
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
 %
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
 %
-% Important note:
-% This template requires the moderncv.cls and .sty files to be in the same 
-% directory as this .tex file. These files provide the resume style and themes 
-% used for structuring the document.
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\usepackage{graphicx}                    % Enable pdflatex
+\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px                    % Saving trees ;-)
+\usepackage{url}
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+\frenchspacing              % Better looking spacings after periods
+\pagestyle{empty}           % No pagenumbers/headers/footers
 
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\usepackage{sectsty}
 
-\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\sectionfont{%			            % Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
 
+%%% Macros
+%%% ------------------------------------------------------------
+\newlength{\spacebox}
+\settowidth{\spacebox}{8888888888}			% Box to align text
+\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
 
-\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{purple} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\newcommand{\MyName}[1]{ % Name
+		\Huge \usefont{OT1}{phv}{b}{n} \hfill #1
+		\par \normalsize \normalfont}
+		
+\newcommand{\MySlogan}[1]{ % Slogan (optional)
+		\large \usefont{OT1}{phv}{m}{n}\hfill \textit{#1}
+		\par \normalsize \normalfont}
 
-\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\newcommand{\NewPart}[1]{\section*{\uppercase{#1}}}
 
-\usepackage[scale=0.8]{geometry} % Reduce document margins
-%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
-\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+\newcommand{\PersonalEntry}[2]{
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}		       % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value
 
+\newcommand{\SkillsEntry}[2]{      % Same as \PersonalEntry
+		\noindent\hangindent=2em\hangafter=0 % Indentation
+		\parbox{\spacebox}{        % Box to align text
+		\textit{#1}}			   % Entry name (birth, address, etc.)
+		\hspace{1.5em} #2 \par}    % Entry value	
+		
+\newcommand{\EducationEntry}[4]{
+		\noindent \textbf{#1} \hfill      % Study
+		\colorbox{Black}{%
+			\parbox{6em}{%
+			\hfill\color{White}#2}} \par  % Duration
+		\noindent \textit{#3} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
 
-%----------------------------------------------------------------------------------------
-%	NAME AND CONTACT INFORMATION SECTION
-%----------------------------------------------------------------------------------------
+\newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
+		\noindent \textbf{#1} \hfill      % Jobname
+		\colorbox{Black}{\color{White}#2} \par  % Duration
+		\noindent \textit{#3} \par              % Company
+		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
+		\normalsize \par}
 
-\firstname{ShubhikaBhardwaj} % Your first name
-%\familyname{Bhardwaj} % Your last name
-
-% All information in this block is optional, comment out any lines you don't need
-\title{Curriculum Vitae}
-%\address{Address}{City, State Zip}
-\mobile{(+91) 9870503321}
-\email{shubhikabhardwaj@gmail.com,shubhika054btcse17@igdtuw.ac.in}
-%\homepage{www.linkedin.com/in/anmol-sikka-696537103/} {LinkedIn} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
-%\homepage{https://sites.google.com/view/sikka-anmol/home}{Homepage}
-%\extrainfo{DOB: September 15, 1997}
-%\photo[70pt][0.4pt]{pictures/House} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
-%\quote{"A witty and playful quotation" - John Smith}
-%----------------------------------------------------------------------------------------
-
+%%% Begin Document
+%%% ------------------------------------------------------------
 \begin{document}
 
-\makecvtitle % Print the CV title
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
+\MyName{Alejandro Delgado}
+\MySlogan{Résumé}
 
-\section{Education}
+\sepspace
 
-\cventry{2017--2021}{B Tech}{}{}{\textit{Department of Computer Science, \link[Indira Gandhi Delhi Technical University for Women]{https://www.igdtuw.ac.in/},Delhi, India Percentage 89.5/100}}{}
+%%% Personal details
+%%% ------------------------------------------------------------
+\NewPart{Personal details}{}
 
-\cventry{2017}{Intermediate}{}{}{\textit{\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India 95.2\%}}{}
+\PersonalEntry{Address}{Street Alfa Centauro 152, Surquillo-Lima}
+\PersonalEntry{Phone}{(+051) 985946415}
+\PersonalEntry{Mail}{\url{adelgadop@outlook.com}}
 
-\cventry{2015}{Matriculation}{}{}{\textit{\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India CGPA 10.0}}{}
+%%% Education
+%%% ------------------------------------------------------------
+\NewPart{Education}{}
 
+\EducationEntry{Environmental Engineering}{2005-2009}{National Agrarian University - La Molina}{Specialization in atmospheric pollution. The issue of thesis was about the application of air quality modeling using AERMOD model in order to determine the effect or sulphur dioxide spreed in the atmosphere. The tittle of the thesis is "\textit{Optimización del Modelo AERMOD mediante el modelo Meteorológico de Mesoescala BRAMS para la Dispersión de SO2
+ de una Fuente Puntual}".}
 
-%----------------------------------------------------------------------------------------
-%	INTERESTS SECTION
-%----------------------------------------------------------------------------------------
+%%% Work experience
+%%% ------------------------------------------------------------
+\NewPart{Work experience}{}
 
+\EducationEntry{Air Quality and Noise Specialist}{2011-present}{Knight Piésold Consultores S.A., Full-time}{Elaboration of environmental studies related with national and international mining projects. Support to Knight Piésold offices in Australia and Ghana. Experience more than 4 years in the elaboration of environmental baseline for climate and meteorology, air quality, noise and ground vibration. Air quality and noise modeler with experience between 2 and 5 years in the use of different software such as AERMOD view, CALPUFF view, IAQx, Openair (R project) and SoundPLAN 7.2}
+\sepspace
 
-% \renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
-% \cvlistdoubleitem{Piano}{}
-% \cvlistitem{Baseball}
-
-%----------------------------------------------------------------------------------------
-%	Achievements SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Scholastic and Curricular Achievements}
-
-\cvitem{Present}{Currently working in the Sponsorship team of  \textbf{TEDx IGDTU} one of the 36 team members in the university}
-\cvitem{Present} {Pursuing \textbf{Microsoft Authorized Certification } course in \textbf{Cross Platform Mobile App Development}}
-\cvitem{2017-18}{Headed the Enactus IGDTU as the\textbf{Project Leader}of Dharini project impacting the lives of \textbfup{1,500 underprivileged women}directly and indirectly}
+\EducationEntry{Practice in Environmental Engineering}{2010-2011}{Klepel Consulting S.A.C., Full-time}{Practice in studies related with environmental impact for constructions of retails in Lima. Researcher in meteorological modeling using BRAMS and applications in order to obtain hourly meteorological data for any location in Perú as input to air quality model.}
+\sepspace
+\sepspace
 
 
+%%% Skills
+%%% ------------------------------------------------------------
+\NewPart{Skills}{}
 
+\SkillsEntry{Languages}{Spanish (mother tongue)}
+\SkillsEntry{}{English (intermediate level)}
+\SkillsEntry{}{}
 
+\SkillsEntry{Software}{\textsc{R- statistical program},\LaTeX,\textsc{CALPUFF},\textsc{AERMOD},\textsc{IAQx}}
+\SkillsEntry{} {\textsc{SoundPLAN}}
 
-%----------------------------------------------------------------------------------------
-%	AWARDS SECTION
-%----------------------------------------------------------------------------------------
-%\section{Certifications}
-
-%\cventry{April 2015 -- April 2017}{Certified LabVIEW Associate Developer}{\textsc{National Instruments}}{}{}{}
-
-
-%----------------------------------------------------------------------------------------
-%	Research SECTION
-%----------------------------------------------------------------------------------------
-
-
-%----------------------------------------------------------------------------------------
-%	Techincal Projects SECTION
-%----------------------------------------------------------------------------------------
-
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	Course Projects SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Course Projects}
-\cvitem{Autumn 2018}{\textbf{IGDTUW Database Management Project modelling the University : DBMS)}}
-\cvitem{}{\textit{Prof. DK Tayal, Department of Computer Science}}
-
-\cvitem{March 2017}{\textbf{Toy Store: Computer Science}}
-\cvitem{}{\textit{Ms.Meenu Kumar, Computer Science}}
-
-\cvitem{August 2017}{\textbf{Internet Banking App:Prototype}}
-\cvitem{}{\textit{Developed for Esya,IIITD}}
-
-%----------------------------------------------------------------------------------------
-%	Institute Positions SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Institute Positions}
-
-\cvitem{September 2018-Present}{\textit{\textbf{Head Coordinator, Media Team| \link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
-\cvitem{}{\textit{Technical Festival}}
-
-\cvitem{December 2018-Present } {\textit{\textbf{Head Coordinator,Event Management Team|\link[Taarangana]{http://www.taarangana.com/}, IGDTUW
-}}}
-
-\cvitem{September 2017}{\textit{\textbf{Coordinator, Media Team| \link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
-\cvitem{}{\textit{Technical Festival}}
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	Skills SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Technical Skills}
-%
-\cvitem{Programming}{\textsc{Python, Java, C++, C, SQL, HTML}}
-\cvitem{Software}{\textsc{\LATEX, Protopie, Atom, MS Word, MS Excel, MS Powerpoint, Javasciprt}}
+\end{document}

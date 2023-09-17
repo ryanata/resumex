@@ -43,164 +43,145 @@ export const templates = {
 % End the document
 \\end{document}`,
 
-bold: `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% "ModernCV" CV and Cover Letter
-% LaTeX Template
-% Version 1.11 (19/6/14)
+bold: `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Template: Curriculum Vitae
 %
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
+% Source: http://www.howtotex.com/
+% Feel free to distribute this template, but please keep the
+% referal to HowToTeX.com.
+% Date: July 2011
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
 %
-% Original author:
-% Xavier Danaux (xdanaux@gmail.com)
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
 %
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
 %
-% Important note:
-% This template requires the moderncv.cls and .sty files to be in the same 
-% directory as this .tex file. These files provide the resume style and themes 
-% used for structuring the document.
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you're new to LaTeX, the wikibook is a great place to start:
+% http://en.wikibooks.org/wiki/LaTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+							
+\\usepackage[english]{babel}
+\\usepackage[utf8x]{inputenc}
+\\usepackage[protrusion=true,expansion=true]{microtype}
+\\usepackage{amsmath,amsfonts,amsthm}     % Math packages
+\\usepackage{graphicx}                    % Enable pdflatex
+\\usepackage[svgnames]{xcolor}            % Colors by their 'svgnames'
+\\usepackage{geometry}
+	\\textheight=700px                    % Saving trees ;-)
+\\usepackage{url}
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+\\frenchspacing              % Better looking spacings after periods
+\\pagestyle{empty}           % No pagenumbers/headers/footers
 
+%%% Custom sectioning (sectsty package)
+%%% ------------------------------------------------------------
+\\usepackage{sectsty}
 
-\\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\\sectionfont{%			            % Change font of \\section command
+	\\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
+	\\sectionrule{0pt}{0pt}{-5pt}{3pt}}
 
+%%% Macros
+%%% ------------------------------------------------------------
+\\newlength{\\spacebox}
+\\settowidth{\\spacebox}{8888888888}			% Box to align text
+\\newcommand{\\sepspace}{\\vspace*{1em}}		% Vertical space macro
 
-\\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\\moderncvcolor{purple} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\\newcommand{\\MyName}[1]{ % Name
+		\\Huge \\usefont{OT1}{phv}{b}{n} \\hfill #1
+		\\par \\normalsize \\normalfont}
+		
+\\newcommand{\\MySlogan}[1]{ % Slogan (optional)
+		\\large \\usefont{OT1}{phv}{m}{n}\\hfill \\textit{#1}
+		\\par \\normalsize \\normalfont}
 
-\\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\\newcommand{\\NewPart}[1]{\\section*{\\uppercase{#1}}}
 
-\\usepackage[scale=0.8]{geometry} % Reduce document margins
-%\\setlength{\\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
-\\setlength{\\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+\\newcommand{\\PersonalEntry}[2]{
+		\\noindent\\hangindent=2em\\hangafter=0 % Indentation
+		\\parbox{\\spacebox}{        % Box to align text
+		\\textit{#1}}		       % Entry name (birth, address, etc.)
+		\\hspace{1.5em} #2 \\par}    % Entry value
 
+\\newcommand{\\SkillsEntry}[2]{      % Same as \\PersonalEntry
+		\\noindent\\hangindent=2em\\hangafter=0 % Indentation
+		\\parbox{\\spacebox}{        % Box to align text
+		\\textit{#1}}			   % Entry name (birth, address, etc.)
+		\\hspace{1.5em} #2 \\par}    % Entry value	
+		
+\\newcommand{\\EducationEntry}[4]{
+		\\noindent \\textbf{#1} \\hfill      % Study
+		\\colorbox{Black}{%
+			\\parbox{6em}{%
+			\\hfill\\color{White}#2}} \\par  % Duration
+		\\noindent \\textit{#3} \\par        % School
+		\\noindent\\hangindent=2em\\hangafter=0 \\small #4 % Description
+		\\normalsize \\par}
 
-%----------------------------------------------------------------------------------------
-%	NAME AND CONTACT INFORMATION SECTION
-%----------------------------------------------------------------------------------------
+\\newcommand{\\WorkEntry}[4]{				  % Same as \\EducationEntry
+		\\noindent \\textbf{#1} \\hfill      % Jobname
+		\\colorbox{Black}{\\color{White}#2} \\par  % Duration
+		\\noindent \\textit{#3} \\par              % Company
+		\\noindent\\hangindent=2em\\hangafter=0 \\small #4 % Description
+		\\normalsize \\par}
 
-\\firstname{ShubhikaBhardwaj} % Your first name
-%\\familyname{Bhardwaj} % Your last name
-
-% All information in this block is optional, comment out any lines you don't need
-\\title{Curriculum Vitae}
-%\\address{Address}{City, State Zip}
-\\mobile{(+91) 9870503321}
-\\email{shubhikabhardwaj@gmail.com,shubhika054btcse17@igdtuw.ac.in}
-%\\homepage{www.linkedin.com/in/anmol-sikka-696537103/} {LinkedIn} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
-%\\homepage{https://sites.google.com/view/sikka-anmol/home}{Homepage}
-%\\extrainfo{DOB: September 15, 1997}
-%\\photo[70pt][0.4pt]{pictures/House} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
-%\\quote{"A witty and playful quotation" - John Smith}
-%----------------------------------------------------------------------------------------
-
+%%% Begin Document
+%%% ------------------------------------------------------------
 \\begin{document}
 
-\\makecvtitle % Print the CV title
-%----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
-%----------------------------------------------------------------------------------------
+\\MyName{Alejandro Delgado}
+\\MySlogan{Résumé}
 
-\\section{Education}
+\\sepspace
 
-\\cventry{2017--2021}{B Tech}{}{}{\\textit{Department of Computer Science, \\link[Indira Gandhi Delhi Technical University for Women]{https://www.igdtuw.ac.in/},Delhi, India Percentage 89.5/100}}{}
+%%% Personal details
+%%% ------------------------------------------------------------
+\\NewPart{Personal details}{}
 
-\\cventry{2017}{Intermediate}{}{}{\\textit{\\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India 95.2\\%}}{}
+\\PersonalEntry{Address}{Street Alfa Centauro 152, Surquillo-Lima}
+\\PersonalEntry{Phone}{(+051) 985946415}
+\\PersonalEntry{Mail}{\\url{adelgadop@outlook.com}}
 
-\\cventry{2015}{Matriculation}{}{}{\\textit{\\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India CGPA 10.0}}{}
+%%% Education
+%%% ------------------------------------------------------------
+\\NewPart{Education}{}
 
+\\EducationEntry{Environmental Engineering}{2005-2009}{National Agrarian University - La Molina}{Specialization in atmospheric pollution. The issue of thesis was about the application of air quality modeling using AERMOD model in order to determine the effect or sulphur dioxide spreed in the atmosphere. The tittle of the thesis is "\\textit{Optimización del Modelo AERMOD mediante el modelo Meteorológico de Mesoescala BRAMS para la Dispersión de SO2
+ de una Fuente Puntual}".}
 
-%----------------------------------------------------------------------------------------
-%	INTERESTS SECTION
-%----------------------------------------------------------------------------------------
+%%% Work experience
+%%% ------------------------------------------------------------
+\\NewPart{Work experience}{}
 
+\\EducationEntry{Air Quality and Noise Specialist}{2011-present}{Knight Piésold Consultores S.A., Full-time}{Elaboration of environmental studies related with national and international mining projects. Support to Knight Piésold offices in Australia and Ghana. Experience more than 4 years in the elaboration of environmental baseline for climate and meteorology, air quality, noise and ground vibration. Air quality and noise modeler with experience between 2 and 5 years in the use of different software such as AERMOD view, CALPUFF view, IAQx, Openair (R project) and SoundPLAN 7.2}
+\\sepspace
 
-% \\renewcommand{\\listitemsymbol}{-~} % Changes the symbol used for lists
-% \\cvlistdoubleitem{Piano}{}
-% \\cvlistitem{Baseball}
-
-%----------------------------------------------------------------------------------------
-%	Achievements SECTION
-%----------------------------------------------------------------------------------------
-
-\\section{Scholastic and Curricular Achievements}
-
-\\cvitem{Present}{Currently working in the Sponsorship team of  \\textbf{TEDx IGDTU} one of the 36 team members in the university}
-\\cvitem{Present} {Pursuing \\textbf{Microsoft Authorized Certification } course in \\textbf{Cross Platform Mobile App Development}}
-\\cvitem{2017-18}{Headed the Enactus IGDTU as the\\textbf{Project Leader}of Dharini project impacting the lives of \\textbfup{1,500 underprivileged women}directly and indirectly}
+\\EducationEntry{Practice in Environmental Engineering}{2010-2011}{Klepel Consulting S.A.C., Full-time}{Practice in studies related with environmental impact for constructions of retails in Lima. Researcher in meteorological modeling using BRAMS and applications in order to obtain hourly meteorological data for any location in Perú as input to air quality model.}
+\\sepspace
+\\sepspace
 
 
+%%% Skills
+%%% ------------------------------------------------------------
+\\NewPart{Skills}{}
 
+\\SkillsEntry{Languages}{Spanish (mother tongue)}
+\\SkillsEntry{}{English (intermediate level)}
+\\SkillsEntry{}{}
 
+\\SkillsEntry{Software}{\\textsc{R- statistical program},\\LaTeX,\\textsc{CALPUFF},\\textsc{AERMOD},\\textsc{IAQx}}
+\\SkillsEntry{} {\\textsc{SoundPLAN}}
 
-%----------------------------------------------------------------------------------------
-%	AWARDS SECTION
-%----------------------------------------------------------------------------------------
-%\\section{Certifications}
-
-%\\cventry{April 2015 -- April 2017}{Certified LabVIEW Associate Developer}{\\textsc{National Instruments}}{}{}{}
-
-
-%----------------------------------------------------------------------------------------
-%	Research SECTION
-%----------------------------------------------------------------------------------------
-
-
-%----------------------------------------------------------------------------------------
-%	Techincal Projects SECTION
-%----------------------------------------------------------------------------------------
-
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	Course Projects SECTION
-%----------------------------------------------------------------------------------------
-
-\\section{Course Projects}
-\\cvitem{Autumn 2018}{\\textbf{IGDTUW Database Management Project modelling the University : DBMS)}}
-\\cvitem{}{\\textit{Prof. DK Tayal, Department of Computer Science}}
-
-\\cvitem{March 2017}{\\textbf{Toy Store: Computer Science}}
-\\cvitem{}{\\textit{Ms.Meenu Kumar, Computer Science}}
-
-\\cvitem{August 2017}{\\textbf{Internet Banking App:Prototype}}
-\\cvitem{}{\\textit{Developed for Esya,IIITD}}
-
-%----------------------------------------------------------------------------------------
-%	Institute Positions SECTION
-%----------------------------------------------------------------------------------------
-
-\\section{Institute Positions}
-
-\\cvitem{September 2018-Present}{\\textit{\\textbf{Head Coordinator, Media Team| \\link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
-\\cvitem{}{\\textit{Technical Festival}}
-
-\\cvitem{December 2018-Present } {\\textit{\\textbf{Head Coordinator,Event Management Team|\\link[Taarangana]{http://www.taarangana.com/}, IGDTUW
-}}}
-
-\\cvitem{September 2017}{\\textit{\\textbf{Coordinator, Media Team| \\link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
-\\cvitem{}{\\textit{Technical Festival}}
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	Skills SECTION
-%----------------------------------------------------------------------------------------
-
-\\section{Technical Skills}
-%
-\\cvitem{Programming}{\\textsc{Python, Java, C++, C, SQL, HTML}}
-\\cvitem{Software}{\\textsc{\\LATEX, Protopie, Atom, MS Word, MS Excel, MS Powerpoint, Javasciprt}}`,
+\\end{document}`,
 
 clean: `% --- LaTeX CV Template - S. Venkatraman ---
 
@@ -303,7 +284,6 @@ clean: `% --- LaTeX CV Template - S. Venkatraman ---
 & Name of award 1 (Organization that gave you the award) \\hfill 2020\\\\
 {\\color{OliveGreen}{scholarships}} 
 & Name of award 2 (Organization that gave you the award)\\hfill 2019 \\\\
-& Name of award 3 (Organization that gave you the award) \\hfill 2018 \\\\
 & \\\\
 
 % --- Section: Publications ---
@@ -333,88 +313,7 @@ clean: `% --- LaTeX CV Template - S. Venkatraman ---
 
 & \\textbf{Title of project or lab where research was conducted} \\\\
 & Mentors: Professor B (University) \\hfill Month Year -- Present \\\\
-& This description of your work might spill onto the next page, which is fine. \\hfill $\\rightarrow$ \\\\
 & Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. Integer pretium semper justo. Proin risus. \\\\
-& \\\\
-
-% --- Section: Teaching experience ---
-
-{\\color{OliveGreen}{Teaching experience}} 
-& \\textbf{Teaching assistant, Department of Subject (University)} \\hfill Fall 2020 \\\\
-& STAT 123: Name of course here \\\\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\\\
-& \\textit{Average student rating: X/5.} \\\\
-& \\\\
-
-& \\textbf{Teaching assistant, Department of Subject (University)} \\hfill Spring 2020 \\\\
-& STAT 234: Name of course here \\\\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\\\
-& \\textit{Average student rating: X/5.} \\\\
-& \\\\
-
-& \\textbf{Teaching assistant, Department of Subject (University)} \\hfill Spring 2020 \\\\
-& STAT 345: Name of course here \\\\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. \\\\
-& \\textit{Average student rating: X/5.} \\\\
-& \\\\
-
-% --- Section: Industry experience ---
-
-{\\color{OliveGreen}{Industry experience}} 
-& {\\textbf{Name of company,}} Division of company \\hfill City, State\\\\
-& Title of job or internship \\hfill Summer 2020 \\\\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Nullam id quam. Nam neque. Phasellus at purus et lib ero lacinia dictum. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque.\\\\
-& \\\\
- 
-& {\\textbf{Name of company,}} Division of company \\hfill City, State\\\\
-& Title of job or internship \\hfill Summer 2020 \\\\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Nullam id quam. Nam neque. Phasellus at purus et lib ero lacinia dictum. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque.\\\\
-& \\\\
-
-% --- Section: Talks and tutorials ---
-
-{\\color{OliveGreen}{Talks and tutorials}} 
-& \\textbf{Title of your most recent presentation} \\hfill Month Year \\\\
-& Name of conference, workshop, seminar, venue, etc., or a description \\\\
-& \\\\
-
-& \\textbf{Title of your second most recent presentation} \\hfill Month Year \\\\
-& Name of conference, workshop, seminar, venue, etc., or a description \\\\
-& \\\\
-
-% --- Section: Various skills (programming, software, languages, etc.) ---
-
-{\\color{OliveGreen}{Skills}} 
-& \\textbf{Programming}\\\\
-& Proficient in: programming language 1, programming language 2. \\\\
-& Familiar with: programming language 3, programming language 4. \\\\
-& \\\\
-
-& \\textbf{Languages} \\\\
-& Language 1 (fluent), Language 2 (advanced) \\\\
-& \\\\
-
-% --- Section: Service and outreach ---
-
-\\color{OliveGreen}{Service and outreach}
-& \\textbf{Title of organization you were in} \\hfill Month Year -- Month Year \\\\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Aliquam volutpat est vel massa. \\\\
-& \\\\
-
-% --- Section: Professional society memberships ---
-% --- Note: section title is spread over two lines ---
-
-{\\color{OliveGreen}{Professional}} 
-& {\\textbf{Name of professional society.}} \\hfill Month Year -- Present \\\\
-{\\color{OliveGreen}{memberships}} 
-& Some things you did or conferences you attended. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\\\
-& \\\\
-
-% --- Section: Other interests/hobbies ---
-
-\\nohyphens{\\color{OliveGreen}{Other interests}} & Some of your hobbies etc.\\\\
-
-% --- End of CV! ---
 
 \\end{longtable}
 \\end{document}`,
@@ -971,314 +870,138 @@ minimalist: `\\documentclass[12pt]{article}
 
 \\end{document}`,
 
-professional: `%-------------------------
-% Entry-level Resume in LaTeX
-% Version - v1.3
-% Last Edits - October 5, 2021
-% Author : Jayesh Sanwal
-% Reach out to me on LinkedIn(/in/jsanwal), with any suggestions, ideas, issues, etc.
-%------------------------
+professional: `\\documentclass{article}
 
-%%-------------------------------------
-% Notes to the User here -
-% 1) Change " Author+an = {N=highlight}" in "Publications.bib", where N is the number at which your name appears
-% 2) Use "\\vspace" wisely, that would change spacing, and is currently being used as a hacky fix
-% 3) Do not delete the fonts in the left side
-% 4) Use the "Rich Text" feature on Overleaf - On the top panel next to source. Makes it much easier for starters on LaTeX to use this template
-% 5) Do NOT use periods at the end of bullet points, the sample (ipsum) text might have it
-% 6) Use "maxbibnames" on this file to change the maximum number of authors on the paper (Credits: Dr. Natasha Krell) - Default is 3, but change line 92 to add authors
-
-%%-------------------------------------
-% Changes from last version (v1.3, October 5, 2021) -
-% 1) Summary statement removed, replaced with 4 keywords on top and Impact statement
-
-% Changes from last version (v1.2, August 23, 2021) -
-% 1) Changes in the Technical Skills section - renamed to just Skills
-% 2) Changed the font size for the name
-% 3) Education to the top
-%%-------------------------------------
-
-
-%%-------------------------------------
-% Changes to be made in the next version -
-% 1) Shift to Class file, make changes here
-% 2) Use a fonts folder
-% 3) Incorporate Leadership & volunteering together
-% 4) Remove \\vspace based 'hacky' fixes
-%%-------------------------------------
-
-
-\\documentclass[a4,10pt]{article}
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  STARTING HERE, DO NOT TOUCH ANYTHING 
-%%%%%%% --------------------------------------------------------------------------------------
-
-\\usepackage{latexsym}
-\\usepackage[empty]{fullpage}
-\\usepackage{titlesec}
- \\usepackage{marvosym}
-\\usepackage[usenames,dvipsnames]{color}
-\\usepackage{verbatim}
-\\usepackage[hidelinks]{hyperref}
-\\usepackage{fancyhdr}
-\\usepackage{multicol}
-\\usepackage{hyperref}
-\\usepackage{csquotes}
-\\usepackage{tabularx}
-\\hypersetup{colorlinks=true,urlcolor=black}
-\\usepackage[11pt]{moresize}
-\\usepackage{setspace}
-\\usepackage{fontspec}
-\\usepackage[inline]{enumitem}
-\\usepackage{array}
-\\newcolumntype{P}[1]{>{\\centering\\arraybackslash}p{#1}}
-\\usepackage{anyfontsize}
-
-%%%% Set Margins
-\\usepackage[margin=1cm, top=1cm]{geometry}
-
-%%%% Set Fonts
-\\setmainfont[
-BoldFont=SourceSansPro-Semibold.otf, %SourceSansPro-Bold.otf
-ItalicFont=SourceSansPro-RegularIt.otf
-]{SourceSansPro-Regular.otf}
-\\setsansfont{SourceSansPro-Semibold.otf}
-
-%%%% Set Page
-\\pagestyle{fancy}
-\\fancyhf{} 
-\\fancyfoot{}
-\\renewcommand{\\headrulewidth}{0pt}
-\\renewcommand{\\footrulewidth}{0pt}
-
-%%%% Set URL Style
-\\urlstyle{same}
-
-%%%% Set Indentation
-\\raggedbottom
-\\raggedright
-\\setlength{\\tabcolsep}{0in}
-
-%%%% Set Secondary Color
-\\definecolor{UI_blue}{RGB}{32, 64, 151}
-
-%%%% Define New Commands
-\\usepackage[style=nature, maxbibnames=3]{biblatex}
-\\addbibresource{Publications.bib}
-
-%%%% Bold Name in Publications
-\\renewcommand*{\\mkbibnamegiven}[1]{%
-\\ifitemannotation{highlight}
-{\\textbf{#1}}
-{#1}}
-
-\\renewcommand*{\\mkbibnamefamily}[1]{%
-\\ifitemannotation{highlight}
-{\\textbf{#1}}
-{#1}}
-
-%%%% Set Sections formatting
-\\titleformat{\\section}{
-\\color{UI_blue} \\scshape \\raggedright \\large 
-}{}{0em}{}[\\vspace{-10pt} \\hrulefill \\vspace{-6pt}]
-
-%%%% Set Subtext Formatting
-\\newcommand{\\subtext}[1]{
-#1\\par\\vspace{-0.2cm}}
-
-% \\newcommand{\\subtextit}[1]{\\vspace{0.15cm}
-% \\textit{ #1 \\vspace{-0.2cm}} }
-
-%%%% Set Item Spacing
-\\setlist[itemize]{align=parleft,left=0pt..1em}
-
-%%%% New Itemize "Zitemize" Formatting - tighter spacing than itemize
-\\newenvironment{zitemize}{
-\\begin{itemize}\\itemsep0pt \\parskip0pt \\parsep1pt}
-{\\end{itemize}\\vspace{-0.5cm}}
-
-
-%%%% Define Skills Bold Formatting
-\\newcommand{\\hskills}[1]{
-\\textbf{\\bfseries #1} }
-
-%%%% Set Subsection formatting
-\\titleformat{\\subsection}{\\vspace{-0.1cm} 
-\\bfseries \\fontsize{11pt}{2cm}}{}{0em}{}[\\vspace{-0.2cm}]
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  END OF "DO NOT TOUCH" REGION
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%% --------------------------------------------------------------------------------------
+\\usepackage[top=0.5in, bottom=0.5in, left=0.5in, right=0.5in]{geometry}
+\\usepackage{enumitem}
 
 \\begin{document}
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  HEADER
-%%%%%%% --------------------------------------------------------------------------------------
 \\begin{center}
-    \\begin{minipage}[b]{0.24\\textwidth}
-            \\large (xxx)-xxx-xxxx \\\\
-            \\large \\href{mailto:youremail@email.com}{youremail@email.com} 
-    \\end{minipage}% 
-    \\begin{minipage}[b]{0.5\\textwidth}
-            \\centering
-            {\\Huge John Snow} \\\\ %
-            \\vspace{0.1cm}
-            {\\color{UI_blue} \\Large{Target Job}} \\\\
-    \\end{minipage}% 
-    \\begin{minipage}[b]{0.24\\textwidth}
-            \\flushright \\large  %Willing to Relocate
-            {\\href{https://www.linkedin.com/in/link/}{linkedin.com/in/yourlink} } \\\\
-            \\href{https://Add_your_portfolio_here_}{Portfolio}
-    \\end{minipage}   
-    
-\\vspace{-0.15cm} 
-{\\color{UI_blue} \\hrulefill}
+\\thispagestyle{empty}
+\\large \\textbf{First Name Last Name \\\\}
+\\normalsize firstname.lastname@gmail.com $\\mid$ 000-000-0000 $\\mid$ www.mywebsite.com    \\\\
+\\hrulefill
 \\end{center}
-\\vspace{-0.25cm}
-\\begin{minipage}[b]{0.25\\textwidth} \\textbullet \\hspace{0.1cm} Keyword 1 \\end{minipage}\\begin{minipage}[b]{0.25\\textwidth} \\textbullet \\hspace{0.1cm} Keyword 2  \\end{minipage}\\begin{minipage}[b]{0.25\\textwidth} \\textbullet \\hspace{0.1cm} Keyword 3 \\end{minipage}\\begin{minipage}[b]{0.25\\textwidth}  \\textbullet \\hspace{0.1cm} Keyword 4 \\end{minipage}
-
-\\hskills{Impact:} A funded research proposals, B technical reports,  \\& C scientific publications with X+ downloads \\& Y+ citations, Z awards  %% This can be customized, but I feel this impact statement makes people want to read more.
-\\vspace{-0.2cm}
 
 
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  EDUCATION
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Education }
-\\subsection*{Master of Science, Microbiology, {\\normalsize \\normalfont University of the North, GPA: x.xx/4.00} \\hfill Mon yyyy --- Mon yyyy} 
-\\vspace{0.1cm}
-\\subsection*{Bachelor of Science, Electrical Engineering, {\\normalsize \\normalfont University of Westeros, GPA: x.xx/10.00} \\hfill Mon yyyy --- Mon yyyy} 
-\\vspace{0.2cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OBJECTIVE
+% Who you are, what domain, what are you looking for and when?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{OBJECTIVE}} \\\\
+\\noindent Graduate student looking for domain positions starting month and year. \\\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SKILLS: Important and relevant to the job you are applying for
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\\noindent \\textbf{\\underline{CORE SKILLS}} \\\\
+Skill 1 (years of experience), Skill 2 (years of experience), Skill 3 (years of experience) \\\\
+% Skill 1 (level of expertise), Skill 2 (level of expertise), Skill 3 (level of expertise) \\\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDUCATION
+% University name, degree, year of graduation, GPA (optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{EDUCATION}} \\\\
+\\textbf{University name} \\hfill City, State \\\\
+\\textit{Degree name + Specialization} \\hfill GPA: x.x/x.x \\hfill month-year \\\\ \\\\
+\\textbf{University name} \\hfill City, State \\\\
+\\textit{Degree name + Specialization} \\hfill GPA: x.x/x.x \\hfill month-year \\\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WORK EXPERIENCE
+% What did you do? -> Project goals OR what problem did you solve?
+% How did you do it? -> Skills and technologies
+% What impact did you create? -> Numbers and percentages.
+% Example: 
+% + Developed an app for matching mentor and mentees for Android and iOS platform.
+% + Successfully matched 85% of the applications and randomized the rest.
+% 
+% Talk about team work, initiative, soft skills.
+%
+% Can also include personal projects, competitions, contribution to Open source.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{WORK EXPERIENCE}} \\\\
+\\noindent \\textbf{Company name} \\hfill City Name, State \\\\
+\\textit{Role name, Deparment Name} \\hfill Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item {Led an initiative XYZ to identify the root cause.}
+\\item {Collaborated with XYZ team to work on XYZ feature. \\\\}
+\\end{itemize}
+
+\\noindent \\textbf{Company name} \\hfill City Name, State \\\\
+\\textit{Role name} \\hfill Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item {... \\\\}
+\\end{itemize}
+
+\\noindent \\textbf{Competition Name} \\hfill City Name, State \\\\
+\\textit{Role name, Team name} \\hfill Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item{Came in the top 10 OR received the most innovative award.}
+\\item {... \\\\}
+\\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PROJECT
+% What did you do?
+% How did you do it? -> Skills and technologies
+% What impact did you create? -> Numbers and percentages.
+%
+% Talk about team work, initiative, soft skills.
+%
+% Can also include personal projects, competitions, contribution to Open source.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{PROJECT WORK}} \\\\
+\\noindent \\textbf{Project Name} \\textit{Course Name} \\hfill  Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item {Led an initiative XYZ to identify the root cause.}
+\\item {Collaborated with XYZ team to work on XYZ feature. \\\\}
+\\end{itemize}
+
+\\noindent \\textbf{Project Name} \\textit{Course Name} \\hfill  Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item {Led an initiative XYZ to identify the root cause.}
+\\item {Collaborated with XYZ team to work on XYZ feature. \\\\}
+\\end{itemize}
+
+\\noindent \\textbf{Project Name} \\textit{Course Name} \\hfill  Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {Developed XYZ using XYZ that led to X\\% improvement.}
+\\item {... \\\\}
+\\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Extra Curricular Activities, Leadership, etc 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{EXTRA SECTION}} \\\\
+\\noindent \\textbf{Activity/ Role} \\hfill Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {What did you do, how did you do it and what did you achieve? \\\\}
+\\end{itemize}
+
+\\noindent \\textbf{Activity/ Role} \\hfill Month, Year $-$ Month, Year
+\\begin{itemize}[noitemsep,nolistsep,leftmargin=*]
+\\item {What did you do, how did you do it and what did you achieve? \\\\}
+\\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Other Skills: you can add all your other skills here.
+% Continue to keep only relevant skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\noindent \\textbf{\\underline{OTHER SKILLS}} \\\\
+\\noindent \\textbf{Skill Group 1:} Skill 1, Skill 2, Skill 3 \\\\
+\\noindent \\textbf{Skill Group 2: } Skill 1, Skill 2, Skill 3, Skill 4
 
 
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  ACADEMIC PROJECTS
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Projects} %% (Or "Research", select as appropriate)
-
-%%% ----- Best way to write items (Credit - FAANGPath.com)
-        % \\item Achieved X\\% growth for XYZ using A, B, and C skills.
-        % \\item Led XYZ which led to X\\% of improvement in ABC
-        % \\item Developed XYZ that did A, B, and C using X, Y, and Z. 
-
-
-%%%%%%% ----------------------------------- Role 1 ----------------------------------- %%%%%%%
-\\subsection*{Role 1, {\\normalsize\\normalfont Department Name} \\hfill Mon yyyy --- Mon yyyy} 
-    \\begin{zitemize}
-        \\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \\item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \\end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 2 ----------------------------------- %%%%%%%
-\\subsection*{Role 2, {\\normalsize\\normalfont Department Name} \\hfill Mon yyyy --- Mon yyyy} 
-    \\begin{zitemize}
-        \\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \\item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \\end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 3 ----------------------------------- %%%%%%%
-\\subsection*{Role 3, {\\normalsize\\normalfont Department Name} \\hfill Mon yyyy --- Mon yyyy} 
-    \\begin{zitemize}
-        \\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \\item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \\end{zitemize}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  WORK EXPERIENCE
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Experience}
-
-%%% ----- Best way to write items (Credit - ResumePuppy.com)
-        % \\item Developed AngularJS microservice to automate parsing of ~300 emails/day for efficient service request categorization using Linux MBox & Perl scripts; reduced manual re-allocation by 87%.
-        % \\item Led the development, build and bring-up execution of Lyft’s first functional AV platform from start to finish; established fleet-grade product reliability over 5 months.
-        % \\item Enhanced user experience by fine-tuning stored procedures & SQL queries for efficient data retrieval from ~4M records accessed by 5000+ users worldwide.
-        % \\item Built a custom menu single handedly using HTML5, CSS3, XML and JSP and improved the performance of existing application by tuning the PL/SQL scripts by 20\\% and reduced on-migration time.
-        
-
-%%%%%%% ----------------------------------- Role 4 ----------------------------------- %%%%%%%
-\\subsection*{XXX Scientist {\\normalsize\\normalfont (Intern)} \\hfill Mon yyyy --- Mon yyyy} 
-\\subtext{Add Company Name Here \\hfill Location} 
-    \\begin{zitemize}
-        \\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet justo porta magna ultrices ultricies. Nam sem augue, lobortis sit amet venenatis sed, rutrum vel dui. Fusce mauris libero, ultrices quis convallis venenatis, malesuada at neque. Vivamus facilisis metus enim, convallis egestas dui dictum vel. Integer lacus nisl, molestie vitae bibendum eget, finibus vitae ligula. 
-        \\item Duis fermentum arcu vitae faucibus cursus. Praesent aliquet id risus dictum lobortis. Donec varius tincidunt aliquet.Nulla congue nulla sed accumsan consequat. Pellentesque facilisis cursus faucibus.
-    \\end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 5 ----------------------------------- %%%%%%%
-\\subsection*{YYY Engineer {\\normalsize\\normalfont (Intern)} \\hfill Mon yyyy --- Mon yyyy} 
-\\subtext{Add Company Name Here \\hfill Location} 
-    \\begin{zitemize}
-        \\item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet justo porta magna ultrices ultricies. Nam sem augue, lobortis sit amet venenatis sed, rutrum vel dui. Fusce mauris libero, ultrices quis convallis venenatis, malesuada at neque. 
-        \\item Duis fermentum arcu vitae faucibus cursus. Praesent aliquet id risus dictum lobortis. Donec varius tincidunt aliquet.
-    \\end{zitemize}
-
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  SKILLS
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Skills}
-\\begin{tabular}{p{7em} p{48em}}
-\\hskills{Physics} &  A, B, C, D, E, F \\\\
-\\hskills{Management} & G, H, I, J, K, L, M  \\\\
-\\hskills{Programming} & N, O, P, Q, R, S, T \\\\
-\\end{tabular}
-\\vspace{-0.2cm}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  VOLUNTEER EXPERIENCE
-%%%%%%% --------------------------------------------------------------------------------------
-% \\section{Volunteer (or LEADERSHIP) Experience}
-
-%%%%%%% ----------------------------------- Role 6 ----------------------------------- %%%%%%%
-% \\subsection*{Position, Org \\hfill Mon yyyy --- Mon yyyy} 
-%     \\begin{zitemize}
-            % \\item \\textbf{Short Project Title.} {Build a project that does something and had quantified success using A, B, and C.}
-%     \\end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 6 ----------------------------------- %%%%%%%
-% \\subsection*{Position, Org \\hfill Mon yyyy --- Mon yyyy} 
-%     \\begin{zitemize}
-            % \\item \\textbf{Short Project Title.} {Build a project that does something and had quantified success using A, B, and C.}
-%     \\end{zitemize}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  PUBLICATIONS
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Publications} 
-\\renewcommand\\refname{\\vskip -1.5em}
-\\nocite{*}
-\\printbibliography[heading=none]
-\\vspace{-0.4cm}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  AWARDS & HONORS
-%%%%%%% --------------------------------------------------------------------------------------
-\\section{Awards \\& Honors}
-\\begin{tabular}[t]{ p{4em} p{50em}}
-\\hskills{yyyy} & Award 1 (\\hskills{\\$xxxxxx}); Award 2 (\\hskills{\\$xxxxxx}); Award 3 (\\hskills{\\$xxxxxx}); Award 4 (\\hskills{\\$xxxxxx}); Award 5 (\\hskills{\\$xxxxxx}) \\\\ % 
-\\hskills{yyyy} & Award 6 (\\hskills{\\$xxxxxx}); Award 7 (\\hskills{\\$xxxxxx}); Award 8 (\\hskills{\\$xxxxxx}) \\\\
-\\end{tabular} 
-
-%%%%%%% ---------------------------- END DOC HERE ---------------------------- %%%%%%% 
-\\end{document}`,
+\\end{document}
+`,
 
 simple: `%-------------------------
 % Resume in Latex
@@ -1530,8 +1253,8 @@ simple: `%-------------------------
 
 simple2: `%-------------------------
 % Resume in Latex
-% Author : Jake Gutierrez
-% Based off of: https://github.com/sb2nov/resume
+% Author : Harshibar
+% Based off of: https://github.com/jakeryang/resume
 % License : MIT
 %------------------------
 
@@ -1548,23 +1271,39 @@ simple2: `%-------------------------
 \\usepackage{fancyhdr}
 \\usepackage[english]{babel}
 \\usepackage{tabularx}
+% only for pdflatex
+% \\input{glyphtounicode}
+
+% fontawesome
 \\usepackage{fontawesome5}
-\\usepackage{multicol}
-\\setlength{\\multicolsep}{-3.0pt}
-\\setlength{\\columnsep}{-1pt}
-\\input{glyphtounicode}
+
+% fixed width
+\\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\\definecolor{light-grey}{gray}{0.83}
+\\definecolor{dark-grey}{gray}{0.3}
+\\definecolor{text-grey}{gray}{.08}
+
+\\DeclareRobustCommand{\\ebseries}{\\fontseries{eb}\\selectfont}
+\\DeclareTextFontCommand{\\texteb}{\\ebseries}
+
+% custom underilne
+\\usepackage{contour}
+\\usepackage[normalem]{ulem}
+\\renewcommand{\\ULdepth}{1.8pt}
+\\contourlength{0.8pt}
+\\newcommand{\\myuline}[1]{%
+  \\uline{\\phantom{#1}}%
+  \\llap{\\contour{white}{#1}}%
+}
 
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \\usepackage[sfdefault]{FiraSans}
-% \\usepackage[sfdefault]{roboto}
-% \\usepackage[sfdefault]{noto-sans}
-% \\usepackage[default]{sourcesanspro}
-
-% serif
-% \\usepackage{CormorantGaramond}
-% \\usepackage{charter}
+% custom font: helvetica-style
+\\usepackage{tgheros}
+\\renewcommand*\\familydefault{\\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\\usepackage[T1]{fontenc}
 
 
 \\pagestyle{fancy}
@@ -1574,11 +1313,11 @@ simple2: `%-------------------------
 \\renewcommand{\\footrulewidth}{0pt}
 
 % Adjust margins
-\\addtolength{\\oddsidemargin}{-0.6in}
-\\addtolength{\\evensidemargin}{-0.5in}
-\\addtolength{\\textwidth}{1.19in}
-\\addtolength{\\topmargin}{-.7in}
-\\addtolength{\\textheight}{1.4in}
+\\addtolength{\\oddsidemargin}{-0.5in}
+\\addtolength{\\evensidemargin}{0in}
+\\addtolength{\\textwidth}{1in}
+\\addtolength{\\topmargin}{-.5in}
+\\addtolength{\\textheight}{1.0in}
 
 \\urlstyle{same}
 
@@ -1586,59 +1325,62 @@ simple2: `%-------------------------
 \\raggedright
 \\setlength{\\tabcolsep}{0in}
 
-% Sections formatting
-\\titleformat{\\section}{
-  \\vspace{-4pt}\\scshape\\raggedright\\large\\bfseries
-}{}{0em}{}[\\color{black}\\titlerule \\vspace{-5pt}]
+% Sections formatting - serif
+% \\titleformat{\\section}{
+%   \\vspace{2pt} \\scshape \\raggedright\\large % header section
+% }{}{0em}{}[\\color{black} \\titlerule \\vspace{-5pt}]
 
+% TODO EBSERIES
+% sans serif sections
+\\titleformat {\\section}{
+    \\bfseries \\vspace{2pt} \\raggedright \\large % header section
+}{}{0em}{}[\\color{light-grey} {\\titlerule[2pt]} \\vspace{-4pt}]
+
+% only for pdflatex
 % Ensure that generate pdf is machine readable/ATS parsable
-\\pdfgentounicode=1
+% \\pdfgentounicode=1
 
 %-------------------------
 % Custom commands
 \\newcommand{\\resumeItem}[1]{
   \\item\\small{
-    {#1 \\vspace{-2pt}}
-  }
-}
-
-\\newcommand{\\classesList}[4]{
-    \\item\\small{
-        {#1 #2 #3 #4 \\vspace{-2pt}}
+    {#1 \\vspace{-1pt}}
   }
 }
 
 \\newcommand{\\resumeSubheading}[4]{
-  \\vspace{-2pt}\\item
-    \\begin{tabular*}{1.0\\textwidth}[t]{l@{\\extracolsep{\\fill}}r}
-      \\textbf{#1} & \\textbf{\\small #2} \\\\
-      \\textit{\\small#3} & \\textit{\\small #4} \\\\
-    \\end{tabular*}\\vspace{-7pt}
+  \\vspace{-1pt}\\item
+    \\begin{tabular*}{\\textwidth}[t]{l@{\\extracolsep{\\fill}}r}
+      \\textbf{#1} & {\\color{dark-grey}\\small #2}\\vspace{1pt}\\\\ % top row of resume entry
+      \\textit{#3} & {\\color{dark-grey} \\small #4}\\\\ % second row of resume entry
+    \\end{tabular*}\\vspace{-4pt}
 }
 
 \\newcommand{\\resumeSubSubheading}[2]{
     \\item
-    \\begin{tabular*}{0.97\\textwidth}{l@{\\extracolsep{\\fill}}r}
+    \\begin{tabular*}{\\textwidth}{l@{\\extracolsep{\\fill}}r}
       \\textit{\\small#1} & \\textit{\\small #2} \\\\
     \\end{tabular*}\\vspace{-7pt}
 }
 
 \\newcommand{\\resumeProjectHeading}[2]{
     \\item
-    \\begin{tabular*}{1.001\\textwidth}{l@{\\extracolsep{\\fill}}r}
-      \\small#1 & \\textbf{\\small #2}\\\\
-    \\end{tabular*}\\vspace{-7pt}
+    \\begin{tabular*}{\\textwidth}{l@{\\extracolsep{\\fill}}r}
+      #1 & {\\color{dark-grey}} \\\\
+    \\end{tabular*}\\vspace{-4pt}
 }
 
 \\newcommand{\\resumeSubItem}[1]{\\resumeItem{#1}\\vspace{-4pt}}
 
-\\renewcommand\\labelitemi{$\\vcenter{\\hbox{\\tiny$\\bullet$}}$}
 \\renewcommand\\labelitemii{$\\vcenter{\\hbox{\\tiny$\\bullet$}}$}
 
-\\newcommand{\\resumeSubHeadingListStart}{\\begin{itemize}[leftmargin=0.0in, label={}]}
+% CHANGED default leftmargin  0.15 in
+\\newcommand{\\resumeSubHeadingListStart}{\\begin{itemize}[leftmargin=0in, label={}]}
 \\newcommand{\\resumeSubHeadingListEnd}{\\end{itemize}}
 \\newcommand{\\resumeItemListStart}{\\begin{itemize}}
-\\newcommand{\\resumeItemListEnd}{\\end{itemize}\\vspace{-5pt}}
+\\newcommand{\\resumeItemListEnd}{\\end{itemize}\\vspace{0pt}}
+
+\\color{text-grey}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1647,133 +1389,110 @@ simple2: `%-------------------------
 \\begin{document}
 
 %----------HEADING----------
-% \\begin{tabular*}{\\textwidth}{l@{\\extracolsep{\\fill}}r}
-%   \\textbf{\\href{http://sourabhbajaj.com/}{\\Large Sourabh Bajaj}} & Email : \\href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\\\
-%   \\href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\\\
-% \\end{tabular*}
-
 \\begin{center}
-    {\\Huge \\scshape First Last} \\\\ \\vspace{1pt}
-    123 Street Name, Town, State 12345 \\\\ \\vspace{1pt}
-    \\small \\raisebox{-0.1\\height}\\faPhone\\ 123-456-7890 ~ \\href{mailto:x@gmail.com}{\\raisebox{-0.2\\height}\\faEnvelope\\  \\underline{email@gmail.com}} ~ 
-    \\href{https://linkedin.com/in//}{\\raisebox{-0.2\\height}\\faLinkedin\\ \\underline{linkedin.com/in/username}}  ~
-    \\href{https://github.com/}{\\raisebox{-0.2\\height}\\faGithub\\ \\underline{github.com/username}}
-    \\vspace{-8pt}
+    \\textbf{\\Huge Harshibar} \\\\ \\vspace{5pt}
+    \\small \\faPhone* \\texttt{555.555.5555} \\hspace{1pt} $|$
+    \\hspace{1pt} \\faEnvelope \\hspace{2pt} \\texttt{hello@email.com} \\hspace{1pt} $|$ 
+    \\hspace{1pt} \\faYoutube \\hspace{2pt} \\texttt{harshibar} \\hspace{1pt} $|$
+    \\hspace{1pt} \\faMapMarker* \\hspace{2pt}\\texttt{U.S. Citizen}
+    \\\\ \\vspace{-3pt}
 \\end{center}
 
-
-%-----------EDUCATION-----------
-\\section{Education}
-  \\resumeSubHeadingListStart
-    \\resumeSubheading
-      {State University}{Sep. 2017 -- May 2021}
-      {Bachelor of Science in Computer Science}{City, State}
-  \\resumeSubHeadingListEnd
-
-%------RELEVANT COURSEWORK-------
-\\section{Relevant Coursework}
-    %\\resumeSubHeadingListStart
-        \\begin{multicols}{4}
-            \\begin{itemize}[itemsep=-5pt, parsep=3pt]
-                \\item\\small Data Structures
-                \\item Software Methodology
-                \\item Algorithms Analysis
-                \\item Database Management
-                \\item Artificial Intelligence
-                \\item Internet Technology
-                \\item Systems Programming
-                \\item Computer Architecture
-            \\end{itemize}
-        \\end{multicols}
-        \\vspace*{2.0\\multicolsep}
-    %\\resumeSubHeadingListEnd
-
-
 %-----------EXPERIENCE-----------
-\\section{Experience}
+\\section{EXPERIENCE}
   \\resumeSubHeadingListStart
 
     \\resumeSubheading
-      {Electronics Company}{May 2020 -- August 2020}
-      {Software Engineer Intern}{City, State}
+      {YouTube}{Aug. 2019 -- Present}
+      {Creator (\\href{https://www.youtube.com/c/harshibar}{\\myuline {@harshibar}})}{San Francisco, CA}
       \\resumeItemListStart
-        \\resumeItem{Developed a service to automatically perform a set of unit tests daily on a product in development in order to decrease time needed for team members to identify and fix bugs/issues.}
-        \\resumeItem{Incorporated scripts using Python and PowerShell to aggregate XML test results into an organized format and to load the latest build code onto the hardware, so that daily testing can be performed.}
-        \\resumeItem{Utilized Jenkins to provide a continuous integration service in order to automate the entire process of loading the latest build code and test files, running the tests, and generating a report of the results once per day.}
-        \\resumeItem{Explored ways to visualize and send a daily report of test results to team members  using HTML, Javascript, and CSS.}
+        \\resumeItem{Grew channel to \\textbf{60k subscribers in 1.5 years}; created 80+ videos on tech and productivity}
+        \\resumeItem{Conducted A/B testing on titles and thumbnails; \\textbf{increased video impressions by 2.5M} in 3 months}
+         \\resumeItem{Designed a Notion workflow to streamline video production and roadmapping; boosted productivity by 20\\%}
+        \\resumeItem{\\textbf{Partnered with brands like Skillshare and Squarespace} to expand their outreach via sponsorships}
+        \\resumeItem{\\textbf{Highlights}:
+            \\href{https://www.youtube.com/watch?v=HhWUjp5pD0g}{\\myuline {The Problem with Productivity Apps}}, \\href{https://www.youtube.com/watch?v=ms4cWMsOITs}{\\myuline {Obsidian App Review}},
+            \\href{https://www.youtube.com/watch?v=PkDbkyIR44w}{\\myuline {Not-So-Minimal Desk Setup}}}
       \\resumeItemListEnd
 
     \\resumeSubheading
-      {Startup, Inc}{May 2019 -- August 2019}
-      {Front End Developer Intern}{City, State}
+      {Google Verily}{Aug. 2018 -- Sept. 2019}
+      {Software Engineer}{San Francisco, CA}
       \\resumeItemListStart
-        \\resumeItem{Assisted in development of the front end of a mobile application for iOS/Android using Dart and the Flutter framework.}
-        \\resumeItem{Worked with Google Firebase to manage user inputted data across multiple platforms including web and mobile apps.}
-        \\resumeItem{Collaborated with team members using version control systems such as Git to organize modifications and assign tasks.}
-        \\resumeItem{Utilized Android Studio as a development environment in order to visualize the application in both iOS and Android.}
+        \\resumeItem{\\textbf{Led front-end development} of a dashboard to process 50k blood samples and detect early-stage cancer}
+        \\resumeItem{Rebuilt a Quality Control product with input from 20 cross-functional stakeholders, \\textbf{saving \\$1M annually}}
+        \\resumeItem{Spearheaded product development of a new lab workflow tool, leading to a 40\\% increase in efficiency; \\\\ shadowed 10 core users, iterated on design docs, and implemented the solution with one engineer}
+
     \\resumeItemListEnd
-    
+
+    \\resumeSubheading
+      {Amazon}{May 2017 -- Aug. 2017}
+      {Software Engineering Intern}{Seattle, WA}
+      \\resumeItemListStart
+        \\resumeItem{Worked on the Search Customer Experience Team; \\textbf{received a return offer} for a full-time position}
+        \\resumeItem{\\textbf{Shipped a new feature to 2M+ users} to improve the search experience for movie series-related queries}
+        \\resumeItem{Built a back-end database service in Java and implemented a front-end UI to support future changes}
+      \\resumeItemListEnd
+
   \\resumeSubHeadingListEnd
-\\vspace{-16pt}
+
 
 %-----------PROJECTS-----------
-\\section{Projects}
-    \\vspace{-5pt}
+
+\\section{PROJECTS}
     \\resumeSubHeadingListStart
       \\resumeProjectHeading
-          {\\textbf{Gym Reservation Bot} $|$ \\emph{Python, Selenium, Google Cloud Console}}{January 2021}
+          {\\textbf{Hyku Consulting}} {Sept. 2019 -- Mar. 2021}
           \\resumeItemListStart
-            \\resumeItem{Developed an automatic bot using Python and Google Cloud Console to register myself for a timeslot at my school gym.}
-            \\resumeItem{Implemented Selenium to create an instance of Chrome in order to interact with the correct elements of the web page.}
-            \\resumeItem{Created a Linux virtual machine to run on Google Cloud so that the program is able to run everyday from the cloud.}
-            \\resumeItem{Used Cron to schedule the program to execute automatically at 11 AM every morning so a reservation is made for me.}
+            \\resumeItem{Mentored 15 students towards acceptance at top US boarding schools; achieved \\textbf{100\\% success rate}}
+            \\resumeItem{Designed a \\textbf{collaborative learning ecosystem} for students and parents with Trello, Miro, and Google Suite}
           \\resumeItemListEnd
-          \\vspace{-13pt}
+          
+        \\resumeProjectHeading
+          {\\textbf{Minimal Icon Pack}}{Sept. 2020 -- Nov. 2020}
+          \\resumeItemListStart
+            \\resumeItem{Designed and released 100+ minimal iOS and Android icons from scratch using Procreate and Figma}
+            \\resumeItem{Marketed the product and design process on {\\href{https://www.youtube.com/watch?v=Ju32r7QJCzk}{\\myuline {YouTube}}}; accumulated over \\textbf{\\$250 in sales} on {\\href{https://gumroad.com/l/icons-by-harshibar}{\\myuline {Gumroad}}}}
+          \\resumeItemListEnd
+          
       \\resumeProjectHeading
-          {\\textbf{Ticket Price Calculator App} $|$ \\emph{Java, Android Studio}}{November 2020}
+         {\\textbf{CommonIntern}}{Sept. 2019 -- May 2020}
           \\resumeItemListStart
-            \\resumeItem{Created an Android application using Java and Android Studio to calculate ticket prices for trips to museums in NYC.}
-            \\resumeItem{Processed user inputted information in the back-end of the app to return a subtotal price based on the tickets selected.}
-            \\resumeItem{Utilized the layout editor to create a UI for the application in order to allow different scenes to interact with each other.}
-          \\resumeItemListEnd 
-          \\vspace{-13pt}
-          \\resumeProjectHeading
-          {\\textbf{Transaction Management GUI} $|$ \\emph{Java, Eclipse, JavaFX}}{October 2020}
-          \\resumeItemListStart
-            \\resumeItem{Designed a sample banking transaction system using Java to simulate the common functions of using a bank account.}
-            \\resumeItem{Used JavaFX to create a GUI that supports actions such as creating an account, deposit, withdraw, list all acounts, etc.}
-            \\resumeItem{Implemented object-oriented programming practices such as inheritance to create different account types and databases.}
-          \\resumeItemListEnd 
+            \\resumeItem{Built a Python script to automatically apply to jobs on Glassdoor using BeautifulSoup and Selenium}
+            \\resumeItem{\\textbf{500 stars on \\href{https://github.com/harshibar/common-intern}{\\myuline {GitHub}}}; featured on {\\href{https://hackaday.com/2020/05/30/job-application-script-automates-the-boring-stuff-with-python}{\\myuline {Hackaday}}}; made the front page of {\\href {https://www.reddit.com/r/Python/comments/gpaegj/i_was_tired_of_opening_100s_of_tabs_for/?utm_source=share}{\\myuline {r/python}}} and {\\href {https://www.reddit.com/r/programming/comments/dcmbzx/i_was_tired_of_opening_100s_of_tabs_for/}{\\myuline {r/programming}}}}
+          \\resumeItemListEnd
+          
     \\resumeSubHeadingListEnd
-\\vspace{-15pt}
+
+
+
+%-----------EDUCATION-----------
+\\section {EDUCATION}
+  \\resumeSubHeadingListStart
+    \\resumeSubheading
+      {Wellesley College}{Aug. 2014 -- May 2018}
+      {Bachelor of Arts in Computer Science and Pre-Med}{Wellesley, MA}
+      	\\resumeItemListStart
+    	\\resumeItem {\\textbf{Coursework}: Data Structures, Algorithms, Databases, Computer Systems, Machine Learning}
+        \\resumeItem 
+            {\\textbf{Research}: MIT Graybiel Lab (published author), MIT Media Lab (analyzed urban microbe spread)}
+        \\resumeItemListEnd
+  \\resumeSubHeadingListEnd
 
 
 %
 %-----------PROGRAMMING SKILLS-----------
-\\section{Technical Skills}
- \\begin{itemize}[leftmargin=0.15in, label={}]
+\\section{SKILLS}
+ \\begin{itemize}[leftmargin=0in, label={}]
     \\small{\\item{
-     \\textbf{Languages}{: Python, Java, C, HTML/CSS, JavaScript, SQL} \\\\
-     \\textbf{Developer Tools}{: VS Code, Eclipse, Google Cloud Platform, Android Studio} \\\\
-     \\textbf{Technologies/Frameworks}{: Linux, Jenkins, GitHub, JUnit, WordPress} \\\\
+     \\textbf{Languages} {: Python, JavaScript (React.js), HTML/CSS, SQL (PostgreSQL, MySQL)}\\vspace{2pt} \\\\
+     \\textbf{Tools}     {: Figma, Notion, Jira, Trello, Miro, Google Analytics, GitHub, DaVinci Resolve, OBS}
     }}
  \\end{itemize}
- \\vspace{-16pt}
 
 
-%-----------INVOLVEMENT---------------
-\\section{Leadership / Extracurricular}
-    \\resumeSubHeadingListStart
-        \\resumeSubheading{Fraternity}{Spring 2020 -- Present}{President}{University Name}
-            \\resumeItemListStart
-                \\resumeItem{Achieved a 4 star fraternity ranking by the Office of Fraternity and Sorority Affairs (highest possible ranking).}
-                \\resumeItem{Managed executive board of 5 members and ran weekly meetings to oversee progress in essential parts of the chapter.}
-                \\resumeItem{Led chapter of 30+ members to work towards goals that improve and promote community service, academics, and unity.}
-            \\resumeItemListEnd
-        
-    \\resumeSubHeadingListEnd
-
-
-\\end{document}`
+%-------------------------------------------
+\\end{document}
+`
 
 }

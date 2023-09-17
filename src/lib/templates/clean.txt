@@ -99,7 +99,6 @@
 & Name of award 1 (Organization that gave you the award) \hfill 2020\\
 {\color{OliveGreen}{scholarships}} 
 & Name of award 2 (Organization that gave you the award)\hfill 2019 \\
-& Name of award 3 (Organization that gave you the award) \hfill 2018 \\
 & \\
 
 % --- Section: Publications ---
@@ -129,88 +128,7 @@
 
 & \textbf{Title of project or lab where research was conducted} \\
 & Mentors: Professor B (University) \hfill Month Year -- Present \\
-& This description of your work might spill onto the next page, which is fine. \hfill $\rightarrow$ \\
 & Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. Integer pretium semper justo. Proin risus. \\
-& \\
-
-% --- Section: Teaching experience ---
-
-{\color{OliveGreen}{Teaching experience}} 
-& \textbf{Teaching assistant, Department of Subject (University)} \hfill Fall 2020 \\
-& STAT 123: Name of course here \\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\
-& \textit{Average student rating: X/5.} \\
-& \\
-
-& \textbf{Teaching assistant, Department of Subject (University)} \hfill Spring 2020 \\
-& STAT 234: Name of course here \\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\
-& \textit{Average student rating: X/5.} \\
-& \\
-
-& \textbf{Teaching assistant, Department of Subject (University)} \hfill Spring 2020 \\
-& STAT 345: Name of course here \\
-& Topics and description of your responsibilities. Aliquam volutpat est vel massa. \\
-& \textit{Average student rating: X/5.} \\
-& \\
-
-% --- Section: Industry experience ---
-
-{\color{OliveGreen}{Industry experience}} 
-& {\textbf{Name of company,}} Division of company \hfill City, State\\
-& Title of job or internship \hfill Summer 2020 \\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Nullam id quam. Nam neque. Phasellus at purus et lib ero lacinia dictum. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque.\\
-& \\
- 
-& {\textbf{Name of company,}} Division of company \hfill City, State\\
-& Title of job or internship \hfill Summer 2020 \\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Nullam id quam. Nam neque. Phasellus at purus et lib ero lacinia dictum. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque.\\
-& \\
-
-% --- Section: Talks and tutorials ---
-
-{\color{OliveGreen}{Talks and tutorials}} 
-& \textbf{Title of your most recent presentation} \hfill Month Year \\
-& Name of conference, workshop, seminar, venue, etc., or a description \\
-& \\
-
-& \textbf{Title of your second most recent presentation} \hfill Month Year \\
-& Name of conference, workshop, seminar, venue, etc., or a description \\
-& \\
-
-% --- Section: Various skills (programming, software, languages, etc.) ---
-
-{\color{OliveGreen}{Skills}} 
-& \textbf{Programming}\\
-& Proficient in: programming language 1, programming language 2. \\
-& Familiar with: programming language 3, programming language 4. \\
-& \\
-
-& \textbf{Languages} \\
-& Language 1 (fluent), Language 2 (advanced) \\
-& \\
-
-% --- Section: Service and outreach ---
-
-\color{OliveGreen}{Service and outreach}
-& \textbf{Title of organization you were in} \hfill Month Year -- Month Year \\
-& Description of your responsibilities. Integer pretium semper justo. Proin risus. Aliquam volutpat est vel massa. \\
-& \\
-
-% --- Section: Professional society memberships ---
-% --- Note: section title is spread over two lines ---
-
-{\color{OliveGreen}{Professional}} 
-& {\textbf{Name of professional society.}} \hfill Month Year -- Present \\
-{\color{OliveGreen}{memberships}} 
-& Some things you did or conferences you attended. Aliquam volutpat est vel massa. Sed dolor lacus, imperdiet non, ornare non, commodo eu, neque. \\
-& \\
-
-% --- Section: Other interests/hobbies ---
-
-\nohyphens{\color{OliveGreen}{Other interests}} & Some of your hobbies etc.\\
-
-% --- End of CV! ---
 
 \end{longtable}
 \end{document}

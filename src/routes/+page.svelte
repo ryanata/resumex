@@ -4,11 +4,11 @@
     import { templates } from '$lib/index.js'
     import { preferences } from "$lib/stores/store.js";
     import { goto } from '$app/navigation';
-    import bold from '$lib/images/bold.jpeg';
+    import bold from '$lib/images/bold.jpg';
     import clean from '$lib/images/clean.jpeg';
     import colorful from '$lib/images/colorful.jpeg';
     import minimalist from '$lib/images/minimalist.jpeg';
-    import professional from '$lib/images/professional.jpeg';
+    import professional from '$lib/images/professional.jpg';
     import simple from '$lib/images/simple.jpeg';
     import simple2 from '$lib/images/simple2.jpeg';
 
@@ -30,13 +30,13 @@
 
         <TemplateCard handler={() => saveTemplate("blank")} title="Blank"/>
 
-        <TemplateCard title="Simple" imgLink={simple}/>
-        <TemplateCard title="Simple 2.0" imgLink={simple2}/>
-        <TemplateCard title="Professional" imgLink={professional}/>
-        <TemplateCard title="Clean" imgLink={clean}/>
-        <TemplateCard title="Colorful" imgLink={colorful}/>
-        <TemplateCard title="Minimalist" imgLink={minimalist}/>
-        <TemplateCard title="Bold" imgLink={bold}/>
+        <TemplateCard title="Simple" imgLink={simple} handler={() => saveTemplate("simple")}/>
+        <TemplateCard title="Simple 2.0" imgLink={simple2} handler={() => saveTemplate("simple2")}/>
+        <TemplateCard title="Columns" imgLink={professional} handler={() => saveTemplate("professional")}/>
+        <TemplateCard title="Clean" imgLink={clean} handler={() => saveTemplate("clean")}/>
+        <TemplateCard title="Colorful" imgLink={colorful} handler={() => saveTemplate("colorful")}/>
+        <TemplateCard title="Minimalist" imgLink={minimalist} handler={() => saveTemplate("minimalist")}/>
+        <TemplateCard title="Bold" imgLink={bold} handler={() => saveTemplate("bold")}/>
     </div>
 </section>
 

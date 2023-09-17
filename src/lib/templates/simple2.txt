@@ -1,7 +1,7 @@
 %-------------------------
 % Resume in Latex
-% Author : Jake Gutierrez
-% Based off of: https://github.com/sb2nov/resume
+% Author : Harshibar
+% Based off of: https://github.com/jakeryang/resume
 % License : MIT
 %------------------------
 
@@ -18,23 +18,39 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+% only for pdflatex
+% \input{glyphtounicode}
+
+% fontawesome
 \usepackage{fontawesome5}
-\usepackage{multicol}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underilne
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
 
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
+% custom font: helvetica-style
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
 
 
 \pagestyle{fancy}
@@ -44,11 +60,11 @@
 \renewcommand{\footrulewidth}{0pt}
 
 % Adjust margins
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
 
 \urlstyle{same}
 
@@ -56,59 +72,62 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+% Sections formatting - serif
+% \titleformat{\section}{
+%   \vspace{2pt} \scshape \raggedright\large % header section
+% }{}{0em}{}[\color{black} \titlerule \vspace{-5pt}]
 
+% TODO EBSERIES
+% sans serif sections
+\titleformat {\section}{
+    \bfseries \vspace{2pt} \raggedright \large % header section
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
+
+% only for pdflatex
 % Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+% \pdfgentounicode=1
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
-
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
+    {#1 \vspace{-1pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textbf{\small #2} \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\ % top row of resume entry
+      \textit{#3} & {\color{dark-grey} \small #4}\\ % second row of resume entry
+    \end{tabular*}\vspace{-4pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
     \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-7pt}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}} \\
+    \end{tabular*}\vspace{-4pt}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+% CHANGED default leftmargin  0.15 in
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+
+\color{text-grey}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,131 +136,107 @@
 \begin{document}
 
 %----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-
 \begin{center}
-    {\Huge \scshape First Last} \\ \vspace{1pt}
-    123 Street Name, Town, State 12345 \\ \vspace{1pt}
-    \small \raisebox{-0.1\height}\faPhone\ 123-456-7890 ~ \href{mailto:x@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{email@gmail.com}} ~ 
-    \href{https://linkedin.com/in//}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/username}}  ~
-    \href{https://github.com/}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/username}}
-    \vspace{-8pt}
+    \textbf{\Huge Harshibar} \\ \vspace{5pt}
+    \small \faPhone* \texttt{555.555.5555} \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} \texttt{hello@email.com} \hspace{1pt} $|$ 
+    \hspace{1pt} \faYoutube \hspace{2pt} \texttt{harshibar} \hspace{1pt} $|$
+    \hspace{1pt} \faMapMarker* \hspace{2pt}\texttt{U.S. Citizen}
+    \\ \vspace{-3pt}
 \end{center}
 
-
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {State University}{Sep. 2017 -- May 2021}
-      {Bachelor of Science in Computer Science}{City, State}
-  \resumeSubHeadingListEnd
-
-%------RELEVANT COURSEWORK-------
-\section{Relevant Coursework}
-    %\resumeSubHeadingListStart
-        \begin{multicols}{4}
-            \begin{itemize}[itemsep=-5pt, parsep=3pt]
-                \item\small Data Structures
-                \item Software Methodology
-                \item Algorithms Analysis
-                \item Database Management
-                \item Artificial Intelligence
-                \item Internet Technology
-                \item Systems Programming
-                \item Computer Architecture
-            \end{itemize}
-        \end{multicols}
-        \vspace*{2.0\multicolsep}
-    %\resumeSubHeadingListEnd
-
-
 %-----------EXPERIENCE-----------
-\section{Experience}
+\section{EXPERIENCE}
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Electronics Company}{May 2020 -- August 2020}
-      {Software Engineer Intern}{City, State}
+      {YouTube}{Aug. 2019 -- Present}
+      {Creator (\href{https://www.youtube.com/c/harshibar}{\myuline {@harshibar}})}{San Francisco, CA}
       \resumeItemListStart
-        \resumeItem{Developed a service to automatically perform a set of unit tests daily on a product in development in order to decrease time needed for team members to identify and fix bugs/issues.}
-        \resumeItem{Incorporated scripts using Python and PowerShell to aggregate XML test results into an organized format and to load the latest build code onto the hardware, so that daily testing can be performed.}
-        \resumeItem{Utilized Jenkins to provide a continuous integration service in order to automate the entire process of loading the latest build code and test files, running the tests, and generating a report of the results once per day.}
-        \resumeItem{Explored ways to visualize and send a daily report of test results to team members  using HTML, Javascript, and CSS.}
+        \resumeItem{Grew channel to \textbf{60k subscribers in 1.5 years}; created 80+ videos on tech and productivity}
+        \resumeItem{Conducted A/B testing on titles and thumbnails; \textbf{increased video impressions by 2.5M} in 3 months}
+         \resumeItem{Designed a Notion workflow to streamline video production and roadmapping; boosted productivity by 20\%}
+        \resumeItem{\textbf{Partnered with brands like Skillshare and Squarespace} to expand their outreach via sponsorships}
+        \resumeItem{\textbf{Highlights}:
+            \href{https://www.youtube.com/watch?v=HhWUjp5pD0g}{\myuline {The Problem with Productivity Apps}}, \href{https://www.youtube.com/watch?v=ms4cWMsOITs}{\myuline {Obsidian App Review}},
+            \href{https://www.youtube.com/watch?v=PkDbkyIR44w}{\myuline {Not-So-Minimal Desk Setup}}}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Startup, Inc}{May 2019 -- August 2019}
-      {Front End Developer Intern}{City, State}
+      {Google Verily}{Aug. 2018 -- Sept. 2019}
+      {Software Engineer}{San Francisco, CA}
       \resumeItemListStart
-        \resumeItem{Assisted in development of the front end of a mobile application for iOS/Android using Dart and the Flutter framework.}
-        \resumeItem{Worked with Google Firebase to manage user inputted data across multiple platforms including web and mobile apps.}
-        \resumeItem{Collaborated with team members using version control systems such as Git to organize modifications and assign tasks.}
-        \resumeItem{Utilized Android Studio as a development environment in order to visualize the application in both iOS and Android.}
+        \resumeItem{\textbf{Led front-end development} of a dashboard to process 50k blood samples and detect early-stage cancer}
+        \resumeItem{Rebuilt a Quality Control product with input from 20 cross-functional stakeholders, \textbf{saving \$1M annually}}
+        \resumeItem{Spearheaded product development of a new lab workflow tool, leading to a 40\% increase in efficiency; \\ shadowed 10 core users, iterated on design docs, and implemented the solution with one engineer}
+
     \resumeItemListEnd
-    
+
+    \resumeSubheading
+      {Amazon}{May 2017 -- Aug. 2017}
+      {Software Engineering Intern}{Seattle, WA}
+      \resumeItemListStart
+        \resumeItem{Worked on the Search Customer Experience Team; \textbf{received a return offer} for a full-time position}
+        \resumeItem{\textbf{Shipped a new feature to 2M+ users} to improve the search experience for movie series-related queries}
+        \resumeItem{Built a back-end database service in Java and implemented a front-end UI to support future changes}
+      \resumeItemListEnd
+
   \resumeSubHeadingListEnd
-\vspace{-16pt}
+
 
 %-----------PROJECTS-----------
-\section{Projects}
-    \vspace{-5pt}
+
+\section{PROJECTS}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Gym Reservation Bot} $|$ \emph{Python, Selenium, Google Cloud Console}}{January 2021}
+          {\textbf{Hyku Consulting}} {Sept. 2019 -- Mar. 2021}
           \resumeItemListStart
-            \resumeItem{Developed an automatic bot using Python and Google Cloud Console to register myself for a timeslot at my school gym.}
-            \resumeItem{Implemented Selenium to create an instance of Chrome in order to interact with the correct elements of the web page.}
-            \resumeItem{Created a Linux virtual machine to run on Google Cloud so that the program is able to run everyday from the cloud.}
-            \resumeItem{Used Cron to schedule the program to execute automatically at 11 AM every morning so a reservation is made for me.}
+            \resumeItem{Mentored 15 students towards acceptance at top US boarding schools; achieved \textbf{100\% success rate}}
+            \resumeItem{Designed a \textbf{collaborative learning ecosystem} for students and parents with Trello, Miro, and Google Suite}
           \resumeItemListEnd
-          \vspace{-13pt}
+          
+        \resumeProjectHeading
+          {\textbf{Minimal Icon Pack}}{Sept. 2020 -- Nov. 2020}
+          \resumeItemListStart
+            \resumeItem{Designed and released 100+ minimal iOS and Android icons from scratch using Procreate and Figma}
+            \resumeItem{Marketed the product and design process on {\href{https://www.youtube.com/watch?v=Ju32r7QJCzk}{\myuline {YouTube}}}; accumulated over \textbf{\$250 in sales} on {\href{https://gumroad.com/l/icons-by-harshibar}{\myuline {Gumroad}}}}
+          \resumeItemListEnd
+          
       \resumeProjectHeading
-          {\textbf{Ticket Price Calculator App} $|$ \emph{Java, Android Studio}}{November 2020}
+         {\textbf{CommonIntern}}{Sept. 2019 -- May 2020}
           \resumeItemListStart
-            \resumeItem{Created an Android application using Java and Android Studio to calculate ticket prices for trips to museums in NYC.}
-            \resumeItem{Processed user inputted information in the back-end of the app to return a subtotal price based on the tickets selected.}
-            \resumeItem{Utilized the layout editor to create a UI for the application in order to allow different scenes to interact with each other.}
-          \resumeItemListEnd 
-          \vspace{-13pt}
-          \resumeProjectHeading
-          {\textbf{Transaction Management GUI} $|$ \emph{Java, Eclipse, JavaFX}}{October 2020}
-          \resumeItemListStart
-            \resumeItem{Designed a sample banking transaction system using Java to simulate the common functions of using a bank account.}
-            \resumeItem{Used JavaFX to create a GUI that supports actions such as creating an account, deposit, withdraw, list all acounts, etc.}
-            \resumeItem{Implemented object-oriented programming practices such as inheritance to create different account types and databases.}
-          \resumeItemListEnd 
+            \resumeItem{Built a Python script to automatically apply to jobs on Glassdoor using BeautifulSoup and Selenium}
+            \resumeItem{\textbf{500 stars on \href{https://github.com/harshibar/common-intern}{\myuline {GitHub}}}; featured on {\href{https://hackaday.com/2020/05/30/job-application-script-automates-the-boring-stuff-with-python}{\myuline {Hackaday}}}; made the front page of {\href {https://www.reddit.com/r/Python/comments/gpaegj/i_was_tired_of_opening_100s_of_tabs_for/?utm_source=share}{\myuline {r/python}}} and {\href {https://www.reddit.com/r/programming/comments/dcmbzx/i_was_tired_of_opening_100s_of_tabs_for/}{\myuline {r/programming}}}}
+          \resumeItemListEnd
+          
     \resumeSubHeadingListEnd
-\vspace{-15pt}
+
+
+
+%-----------EDUCATION-----------
+\section {EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Wellesley College}{Aug. 2014 -- May 2018}
+      {Bachelor of Arts in Computer Science and Pre-Med}{Wellesley, MA}
+      	\resumeItemListStart
+    	\resumeItem {\textbf{Coursework}: Data Structures, Algorithms, Databases, Computer Systems, Machine Learning}
+        \resumeItem 
+            {\textbf{Research}: MIT Graybiel Lab (published author), MIT Media Lab (analyzed urban microbe spread)}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
 
 %
 %-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
     \small{\item{
-     \textbf{Languages}{: Python, Java, C, HTML/CSS, JavaScript, SQL} \\
-     \textbf{Developer Tools}{: VS Code, Eclipse, Google Cloud Platform, Android Studio} \\
-     \textbf{Technologies/Frameworks}{: Linux, Jenkins, GitHub, JUnit, WordPress} \\
+     \textbf{Languages} {: Python, JavaScript (React.js), HTML/CSS, SQL (PostgreSQL, MySQL)}\vspace{2pt} \\
+     \textbf{Tools}     {: Figma, Notion, Jira, Trello, Miro, Google Analytics, GitHub, DaVinci Resolve, OBS}
     }}
  \end{itemize}
- \vspace{-16pt}
 
 
-%-----------INVOLVEMENT---------------
-\section{Leadership / Extracurricular}
-    \resumeSubHeadingListStart
-        \resumeSubheading{Fraternity}{Spring 2020 -- Present}{President}{University Name}
-            \resumeItemListStart
-                \resumeItem{Achieved a 4 star fraternity ranking by the Office of Fraternity and Sorority Affairs (highest possible ranking).}
-                \resumeItem{Managed executive board of 5 members and ran weekly meetings to oversee progress in essential parts of the chapter.}
-                \resumeItem{Led chapter of 30+ members to work towards goals that improve and promote community service, academics, and unity.}
-            \resumeItemListEnd
-        
-    \resumeSubHeadingListEnd
-
-
+%-------------------------------------------
 \end{document}
