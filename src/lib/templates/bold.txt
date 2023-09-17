@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.11 (19/6/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+
+\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{purple} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[scale=0.8]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{ShubhikaBhardwaj} % Your first name
+%\familyname{Bhardwaj} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+%\address{Address}{City, State Zip}
+\mobile{(+91) 9870503321}
+\email{shubhikabhardwaj@gmail.com,shubhika054btcse17@igdtuw.ac.in}
+%\homepage{www.linkedin.com/in/anmol-sikka-696537103/} {LinkedIn} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+%\homepage{https://sites.google.com/view/sikka-anmol/home}{Homepage}
+%\extrainfo{DOB: September 15, 1997}
+%\photo[70pt][0.4pt]{pictures/House} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+%\quote{"A witty and playful quotation" - John Smith}
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvtitle % Print the CV title
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2017--2021}{B Tech}{}{}{\textit{Department of Computer Science, \link[Indira Gandhi Delhi Technical University for Women]{https://www.igdtuw.ac.in/},Delhi, India Percentage 89.5/100}}{}
+
+\cventry{2017}{Intermediate}{}{}{\textit{\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India 95.2\%}}{}
+
+\cventry{2015}{Matriculation}{}{}{\textit{\link[Venkateshwar International School]{https://www.vis10dwarka.com/}, New Delhi, India CGPA 10.0}}{}
+
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+
+% \renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+% \cvlistdoubleitem{Piano}{}
+% \cvlistitem{Baseball}
+
+%----------------------------------------------------------------------------------------
+%	Achievements SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Scholastic and Curricular Achievements}
+
+\cvitem{Present}{Currently working in the Sponsorship team of  \textbf{TEDx IGDTU} one of the 36 team members in the university}
+\cvitem{Present} {Pursuing \textbf{Microsoft Authorized Certification } course in \textbf{Cross Platform Mobile App Development}}
+\cvitem{2017-18}{Headed the Enactus IGDTU as the\textbf{Project Leader}of Dharini project impacting the lives of \textbfup{1,500 underprivileged women}directly and indirectly}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+%\section{Certifications}
+
+%\cventry{April 2015 -- April 2017}{Certified LabVIEW Associate Developer}{\textsc{National Instruments}}{}{}{}
+
+
+%----------------------------------------------------------------------------------------
+%	Research SECTION
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	Techincal Projects SECTION
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Course Projects SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Course Projects}
+\cvitem{Autumn 2018}{\textbf{IGDTUW Database Management Project modelling the University : DBMS)}}
+\cvitem{}{\textit{Prof. DK Tayal, Department of Computer Science}}
+
+\cvitem{March 2017}{\textbf{Toy Store: Computer Science}}
+\cvitem{}{\textit{Ms.Meenu Kumar, Computer Science}}
+
+\cvitem{August 2017}{\textbf{Internet Banking App:Prototype}}
+\cvitem{}{\textit{Developed for Esya,IIITD}}
+
+%----------------------------------------------------------------------------------------
+%	Institute Positions SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Institute Positions}
+
+\cvitem{September 2018-Present}{\textit{\textbf{Head Coordinator, Media Team| \link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
+\cvitem{}{\textit{Technical Festival}}
+
+\cvitem{December 2018-Present } {\textit{\textbf{Head Coordinator,Event Management Team|\link[Taarangana]{http://www.taarangana.com/}, IGDTUW
+}}}
+
+\cvitem{September 2017}{\textit{\textbf{Coordinator, Media Team| \link[Innerve]{https://innerve-igdtuw.in/}, IGDTUW}}}
+\cvitem{}{\textit{Technical Festival}}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Skills SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Technical Skills}
+%
+\cvitem{Programming}{\textsc{Python, Java, C++, C, SQL, HTML}}
+\cvitem{Software}{\textsc{\LATEX, Protopie, Atom, MS Word, MS Excel, MS Powerpoint, Javasciprt}}
