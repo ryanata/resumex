@@ -16,9 +16,16 @@
         let idxx = state.selection.ranges[0].from;
         let leftChunk =state.doc.toString().slice(0, idxx);
         let rightChunk = state.doc.toString().slice(idxx);
-        console.log(leftChunk);
-        console.log(rightChunk);
-        return "hello this is a test\nthis is a new line"
+        let data = {
+            left: leftChunk,
+            right: rightChunk
+        }
+        let response = await fetch("https://7595s1thji.execute-api.us-east-2.amazonaws.com/openai_autocomplete", {
+            method: 'POST',
+            body: JSON.stringify(data),
+        })
+        let responseData = await response.json();
+        return responseData.response;
     }
 
     function addinputnoenc(f,n,v) {
@@ -45,6 +52,13 @@
         let inp = f.getElementsByTagName("textarea")[0];
         inp.textContent = editor ? editor.state.doc.toString() : resumex;
         f.submit();
+    }
+
+    function doc_keyUp(e) {
+        // This will test for the Ctrl and Shift keys along with the 'O' key
+        if (e.ctrlKey && e.shiftKey && e.code === 'KeyO') {
+            showModal = window.getSelection().toString();
+        }
     }
 
     onMount(() => {
@@ -75,7 +89,7 @@
 <div class="dashboard">
     <div class="left-pane">
         <Header submitter={submitForm}/>
-        <div class="editor-wrapper">
+        <div class="editor-wrapper" role="application">
             <div id="editor"></div>
         </div>
     </div>
@@ -111,4 +125,5 @@
     #pdf-canvas {
         flex: 1;
     }
+
 </style>
